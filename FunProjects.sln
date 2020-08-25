@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunStackStrings", "FunStackStrings\FunStackStrings.csproj", "{677B319F-9CD4-45D5-AF17-432F31D249D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorsForGeneric", "OperatorsForGeneric\OperatorsForGeneric.csproj", "{EEC9D94C-CA32-4262-8399-1B3EA584DC53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorsForGenericGenerator", "OperatorsForGenericGenerator\OperatorsForGenericGenerator.csproj", "{0BB417A5-FF3A-4B23-83CB-0272EFB5D0BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{677B319F-9CD4-45D5-AF17-432F31D249D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{677B319F-9CD4-45D5-AF17-432F31D249D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{677B319F-9CD4-45D5-AF17-432F31D249D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC9D94C-CA32-4262-8399-1B3EA584DC53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC9D94C-CA32-4262-8399-1B3EA584DC53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC9D94C-CA32-4262-8399-1B3EA584DC53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC9D94C-CA32-4262-8399-1B3EA584DC53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BB417A5-FF3A-4B23-83CB-0272EFB5D0BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BB417A5-FF3A-4B23-83CB-0272EFB5D0BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BB417A5-FF3A-4B23-83CB-0272EFB5D0BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BB417A5-FF3A-4B23-83CB-0272EFB5D0BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -31,3 +31,44 @@ Since f's type is FastString22 its length is 22
 
 You can set any maximum length of strings allocated on stack in the `code_generator.py` file and then
 re-run it. For now it supports up to 32 letters on stack. Crazy!
+
+
+### 2. Operators for Generic type
+
+Fed up with C# that can't into templates? We got a solution! Use `Addition.Do` of two operands to invoke the
+'+' operator!
+
+```cs
+public class JustAddableType
+{
+    private string state;
+    protected JustAddableType(string state)
+        => this.state = state;
+
+    public static JustAddableType operator +(JustAddableType a, JustAddableType b)
+        => new JustAddableType($"{a} + {b}");
+
+    public override string ToString() => state;
+
+    public static implicit operator JustAddableType(string a)
+        => new JustAddableType(a);
+
+}
+
+static void Main(string[] _)
+{
+    var a = Addition.Do(4, 5);
+    var b = Addition.Do("a", "bd");
+    var c = Addition.Do(new Complex(4, 5), new Complex(-1, 5));
+    var d = Addition.Do((JustAddableType)"x", (JustAddableType)"2");
+    Console.WriteLine(a + " " + b + " " + c + " " + d.ToString());
+}
+```
+
+Output:
+
+```
+9 abd (3, 10) x + 2
+```
+
+Subtraction, Division, and Multiplication are available as well.
