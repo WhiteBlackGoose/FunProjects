@@ -35,6 +35,10 @@ namespace OperatorsForGeneric
                 return (T)(object)((Single)(object)a + (Single)(object)b);
             else if (typeof(T) == typeof(Double))
                 return (T)(object)((Double)(object)a + (Double)(object)b);
+            else if (typeof(T) == typeof(Byte))
+                return (T)(object)(Byte)(Int32)(object)((Byte)(object)a + (Byte)(object)b);
+            else if (typeof(T) == typeof(SByte))
+                return (T)(object)(SByte)(Int32)(object)((SByte)(object)a + (SByte)(object)b);
             else if (typeof(T) == typeof(String))
                 return (T)(object)String.Concat((string)(object)a, (string)(object)b);
             else
@@ -74,6 +78,10 @@ namespace OperatorsForGeneric
                 return (T)(object)((Single)(object)a - (Single)(object)b);
             else if (typeof(T) == typeof(Double))
                 return (T)(object)((Double)(object)a - (Double)(object)b);
+            else if (typeof(T) == typeof(Byte))
+                return (T)(object)(Byte)(Int32)(object)((Byte)(object)a - (Byte)(object)b);
+            else if (typeof(T) == typeof(SByte))
+                return (T)(object)(SByte)(Int32)(object)((SByte)(object)a - (SByte)(object)b);
             else
                 return InnerStorage<T>.reflectionOperator(a, b);
         }
@@ -111,6 +119,10 @@ namespace OperatorsForGeneric
                 return (T)(object)((Single)(object)a * (Single)(object)b);
             else if (typeof(T) == typeof(Double))
                 return (T)(object)((Double)(object)a * (Double)(object)b);
+            else if (typeof(T) == typeof(Byte))
+                return (T)(object)(Byte)(Int32)(object)((Byte)(object)a * (Byte)(object)b);
+            else if (typeof(T) == typeof(SByte))
+                return (T)(object)(SByte)(Int32)(object)((SByte)(object)a * (SByte)(object)b);
             else
                 return InnerStorage<T>.reflectionOperator(a, b);
         }
@@ -148,6 +160,10 @@ namespace OperatorsForGeneric
                 return (T)(object)((Single)(object)a / (Single)(object)b);
             else if (typeof(T) == typeof(Double))
                 return (T)(object)((Double)(object)a / (Double)(object)b);
+            else if (typeof(T) == typeof(Byte))
+                return (T)(object)(Byte)(Int32)(object)((Byte)(object)a / (Byte)(object)b);
+            else if (typeof(T) == typeof(SByte))
+                return (T)(object)(SByte)(Int32)(object)((SByte)(object)a / (SByte)(object)b);
             else
                 return InnerStorage<T>.reflectionOperator(a, b);
         }

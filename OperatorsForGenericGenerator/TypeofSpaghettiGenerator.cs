@@ -16,8 +16,10 @@ namespace OperatorsForGenericGenerator
         {
             var (sb, intent) = strInfo;
             sb.Append($"if (typeof(T) == typeof({type.Name}))\n");
-            sb.Append(intent); sb.Append($"    return (T)(object)(({type.Name})(object){args.arg1} {op} ({type.Name})(object){args.arg2});\n");
-
+            var interType = "";
+            if (type == typeof(Byte) || type == typeof(SByte))
+                interType = $"(object)({type.Name})(Int32)"; // as arithmetic operations with bytes return int
+            sb.Append(intent); sb.Append($"    return (T){interType}(object)(({type.Name})(object){args.arg1} {op} ({type.Name})(object){args.arg2});\n");
         }
 
         public string Generate(string intent, string op, (string arg1, string arg2) args)
