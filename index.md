@@ -1,36 +1,33 @@
-## Welcome to GitHub Pages
+## Welcome to Quacker quackers
 
-You can use the [editor on GitHub](https://github.com/WhiteBlackGoose/FunProjects/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+That's a text. Why r u even reading that? ALright I need to copy random text from reddit
+How would you best explain/summarise Navalny to someone from the west who has no idea of his policies/motives/history?
+The BBC have been praising Navalny and calling him a hero for the past month. Also on all the popular Reddit subs
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+I'm a young guy with relatively no knowledge of Russian politics but I happen to watch NFKRZ from time to time and I'm pretty sure he's advocated for Navalny to be president. But there are always Russians in the comment section calling him naive
 
-### Markdown
+Quack quack
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+### That's a... a header or something
 
-```markdown
-Syntax highlighted code block
+Hello All,
 
-# Header 1
-## Header 2
-### Header 3
+I would like to create a C# application that pulls and sends data to a SQLSERVER. It has always been my understanding that one should use restful services and you never hard code passwords. In all the examples I have found, they hard code the connection strings. So here are my questions:
 
-- Bulleted
-- List
+Is it OK to hard code connection strings and passwords?
 
-1. Numbered
-2. List
+Do I have to worry about SQL Injection with Windows Apps?
 
-**Bold** and _Italic_ and `Code` text
+I know you have to login to the actual DB, but I thought this would be part of an API call for every command you do.
 
-[Link](url) and ![Image](src)
-```
+Again, I've found so many example projects showing how to connect to Azure DB's and even local DB's but I feel like hard coding isn't the answer.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+TLDR: My goal is to develop a Windows Application that allows for the administrator to login and control other users, so essentially an administrative panel. Not sure how to securely do this
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/WhiteBlackGoose/FunProjects/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### That's another header
+
+![something](https://i.redd.it/qoiiitf7vjo51.jpg)
 
 ### Support or Contact
 
