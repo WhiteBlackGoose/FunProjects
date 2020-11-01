@@ -3,6 +3,7 @@ using System.Text;
 
 namespace OperatorsForGenericGenerator
 {
+    /// <summary>Some documentation for TypeofSpaghettiGenerator</summary>
     public sealed class TypeofSpaghettiGenerator
     {
         private readonly Type[] types;
@@ -22,6 +23,7 @@ namespace OperatorsForGenericGenerator
             sb.Append(intent); sb.Append($"    return (T){interType}(object)(({type.Name})(object){args.arg1} {op} ({type.Name})(object){args.arg2});\n");
         }
 
+        /// <summary>Some documentation for TypeofSpaghettiGenerator's method</summary>
         public string Generate(string intent, string op, (string arg1, string arg2) args)
         {
             var sb = new StringBuilder();
