@@ -16,9 +16,9 @@ jobs:
     - uses: nikeee/docfx-action@v1.0.0
       name: docfx
       with:
-        args: .github/docfx/docfx.json
+        args: OperatorsForGenericTensor/docfx.json
     - uses: maxheld83/ghpages@master
       name: gh-pages publish
       env:
-        BUILD_DIR: .github/docfx/_site
+        BUILD_DIR: OperatorsForGenericTensor/_site
         GH_PAT: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
