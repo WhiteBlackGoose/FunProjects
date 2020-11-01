@@ -4,8 +4,10 @@ using System.Text;
 
 namespace OperatorsForGenericGenerator
 {
+    /// <summary>Some documentation for SourceGenerator</summary>
     public static class SourceGenerator
     {
+        /// <summary>Some documentation for SourceGenerator's method</summary>
         public static string Generate(Type[] types)
         {
             var sb = new StringBuilder();
