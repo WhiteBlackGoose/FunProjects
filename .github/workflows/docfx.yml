@@ -6,7 +6,6 @@ on:
       - master
     paths:
       - 'OperatorsForGenericGenerator/**'
-      - 'OperatorsForGenericTensor/**'
 
 jobs:
   docfx:
@@ -16,9 +15,9 @@ jobs:
     - uses: nikeee/docfx-action@v1.0.0
       name: docfx
       with:
-        args: OperatorsForGenericTensor/docfx.json
+        args: OperatorsForGenericGenerator/docfx.json
     - uses: maxheld83/ghpages@master
       name: gh-pages publish
       env:
-        BUILD_DIR: OperatorsForGenericTensor/_site
+        BUILD_DIR: OperatorsForGenericGenerator/_site
         GH_PAT: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
