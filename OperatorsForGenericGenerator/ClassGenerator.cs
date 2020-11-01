@@ -4,8 +4,10 @@ using System.Text;
 
 namespace OperatorsForGenericGenerator
 {
+    /// <summary>Some documentation for ClassGenerator</summary>
     public static class ClassGenerator
     {
+        /// <summary>Some documentation for ClassGenerator's method</summary>
         public static void Generate(StringBuilder sb, Type[] types, string className, string op, Func<(string intent, string alreadyIf), string> callback, string intent)
         {
             sb.Append($"{intent}public static class {className}\n");
