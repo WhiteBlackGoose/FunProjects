@@ -4,9 +4,9 @@
       "src": [
         {
           "files": [
-            "**.csproj"
+            "*/OperatorsForGenericGenerator.csproj"
           ],
-          "src": "D:\\main\\vs_prj\\FunProjects\\FunProjects\\OperatorsForGenericGenerator"
+          "src": "OperatorsForGenericGenerator/"
         }
       ],
       "dest": "api",
