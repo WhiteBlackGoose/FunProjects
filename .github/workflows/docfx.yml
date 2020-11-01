@@ -15,7 +15,7 @@ jobs:
     - uses: nikeee/docfx-action@v1.0.0
       name: docfx
       with:
-        args: .github/docfx.json
+        args: .github/docfx/docfx.json
     - uses: maxheld83/ghpages@master
       name: gh-pages publish
       env:
