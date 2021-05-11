@@ -1,0 +1,15 @@
+name: Test Cmake buildability
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Run CMake and see if it builds
+        run: |
+          cd test1
+          cmake -S . -B build
+          cmake --build build
+          ./build/Debug/TestProject
