@@ -78,10 +78,10 @@ add_custom_command(
 
 ### If the platform is OS X, we need to rename dylib file
 if (${IS_OSX})
-    add_custom_command(
+    add_custom_command(TARGET ${PROJECT_NAME}
         POST_BUILD COMMAND 
         ${CMAKE_INSTALL_NAME_TOOL} -add_rpath ${NEW_LIB_PATH}
-        $<TARGET_FILE:executable>)
+        $<TARGET_FILE:${PROJECT_NAME}>)
 endif()
 ###
 
