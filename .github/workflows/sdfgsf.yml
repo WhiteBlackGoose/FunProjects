@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Run CMake and see if it builds
         run: |
-          cd test1
+          cd ./test1
           cmake -S . -B build
           cmake --build build
           ./build/Debug/TestProject
