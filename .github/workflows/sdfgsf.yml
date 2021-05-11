@@ -1,5 +1,7 @@
 name: Test Cmake buildability
 
+on: push
+
 jobs:
   build:
     strategy:
