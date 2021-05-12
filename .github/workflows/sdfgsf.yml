@@ -17,9 +17,9 @@ jobs:
           cmake --build build
           
       - name: Run if Windows
-        if: ${{ matrix.os == "windows-latest" }}
+        if: ${{ matrix.os == 'windows-latest' }}
         run: ./test1/build/Debug/TestProject
       
       - name: Run if Not Windows
-        if: ${{ matrix.os != "windows-latest" }}
+        if: ${{ matrix.os != 'windows-latest' }}
         run: ./test1/build/TestProject
