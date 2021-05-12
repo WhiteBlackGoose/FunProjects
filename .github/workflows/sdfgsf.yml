@@ -15,4 +15,11 @@ jobs:
           cd test1
           cmake -S . -B build
           cmake --build build
-          ./build/Debug/TestProject
+          
+      - name: Run if Windows
+        if: ${{ matrix.os == "windows-latest" }}
+          ./test1/build/Debug/TestProject
+      
+      - name: Run if Not Windows
+        if: ${{ matrix.os != "windows-latest" }}
+          ./test1/build/TestProject
