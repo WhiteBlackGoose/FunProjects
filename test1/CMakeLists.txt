@@ -55,21 +55,25 @@ add_executable(
 ### Define extension and copy the dynamic library depending on the OS
 if (${IS_WINDOWS})
     set(LIB_EXTENSION dll)
+    set(LIB_PREFIX "")
 elseif (${IS_LINUX})
     set(LIB_EXTENSION so)
+    set(LIB_PREFIX lib)
 elseif(${IS_OSX})
     set(LIB_EXTENSION dylib)
+    set(LIB_PREFIX lib)
 else()
     message(FATAL_ERROR "OS is not recognized")
 endif()
 
-set(OLD_LIB_PATH ${PATH_TO_ANGOURIMATH}/out-x64/AngouriMath.CPP.Exporting.${LIB_EXTENSION})
+set(BINARY_FILENAME ${LIB_PREFIX}AngouriMath.CPP.Exporting.${LIB_EXTENSION})
+set(OLD_LIB_PATH ${PATH_TO_ANGOURIMATH}/out-x64/${BINARY_FILENAME})
 set(NEW_LIB_DIR $<TARGET_FILE_DIR:${PROJECT_NAME}>)
-set(NEW_LIB_PATH ${NEW_LIB_DIR}/AngouriMath.CPP.Exporting.${LIB_EXTENSION})
+set(NEW_LIB_PATH ${NEW_LIB_DIR}/${BINARY_FILENAME})
 
 add_custom_command(
     TARGET ${PROJECT_NAME}
-    POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy 
+    PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy 
         ${OLD_LIB_PATH}
         ${NEW_LIB_DIR}
 )
@@ -79,14 +83,10 @@ add_custom_command(
 ### If the platform is OS X, we need to rename dylib file
 if (${IS_OSX})
     add_custom_command(TARGET ${PROJECT_NAME}
-        POST_BUILD COMMAND 
-        ${CMAKE_INSTALL_NAME_TOOL} -add_rpath ${NEW_LIB_PATH}
-        $<TARGET_FILE:${PROJECT_NAME}>)
+        PRE_BUILD COMMAND
+        install_name_tool -id "@rpath/${BINARY_FILENAME}" ${OLD_LIB_PATH})
 endif()
 ###
 
-
 target_link_libraries(${PROJECT_NAME} PUBLIC AngouriMath.CPP.Importing)
 target_include_directories(${PROJECT_NAME} PUBLIC ${PATH_TO_ANGOURIMATH})
-
-
