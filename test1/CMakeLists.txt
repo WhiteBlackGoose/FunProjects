@@ -52,21 +52,8 @@ add_executable(
   main.cpp
 )
 
-### Define extension and copy the dynamic library depending on the OS
-if (${IS_WINDOWS})
-    set(LIB_EXTENSION dll)
-    set(LIB_PREFIX "")
-elseif (${IS_LINUX})
-    set(LIB_EXTENSION so)
-    set(LIB_PREFIX lib)
-elseif(${IS_OSX})
-    set(LIB_EXTENSION dylib)
-    set(LIB_PREFIX lib)
-else()
-    message(FATAL_ERROR "OS is not recognized")
-endif()
-
-set(BINARY_FILENAME ${LIB_PREFIX}AngouriMath.CPP.Exporting.${LIB_EXTENSION})
+### Extension and copy the dynamic library depending on the OS
+set(BINARY_FILENAME ${CMAKE_SHARED_LIBRARY_PREFIX}AngouriMath.CPP.Exporting${CMAKE_SHARED_LIBRARY_SUFFIX})
 set(OLD_LIB_PATH ${PATH_TO_ANGOURIMATH}/out-x64/${BINARY_FILENAME})
 set(NEW_LIB_DIR $<TARGET_FILE_DIR:${PROJECT_NAME}>)
 set(NEW_LIB_PATH ${NEW_LIB_DIR}/${BINARY_FILENAME})
