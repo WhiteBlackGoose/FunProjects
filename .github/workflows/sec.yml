@@ -1,0 +1,9 @@
+name: 'Testing secrets'
+
+on: push
+
+jobs:
+  Running:
+    runs-on: windows-latest
+    steps:
+      - run: echo ${{ SECRETS.QUACK }}
