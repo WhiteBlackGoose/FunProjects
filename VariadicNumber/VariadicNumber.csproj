@@ -6,6 +6,10 @@
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="VariadicNumber.cs">
       <DesignTime>True</DesignTime>
@@ -31,6 +35,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>VariadicNumber.tt</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.0" />
   </ItemGroup>
 
 </Project>
