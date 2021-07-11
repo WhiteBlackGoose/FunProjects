@@ -38,7 +38,7 @@ public struct VariadicNumber
 
 <# foreach (var op in new[] { "+", "-", "*", "/" }) { #>
     public static VariadicNumber operator <#= op #>(VariadicNumber a, VariadicNumber b)
-        => (a.index, b.index) switch
+        => (a.index * 10 + b.index) switch
         {
 <# foreach (var (type1, id1) in types) { #>
 <# foreach (var (type2, id2) in types) { #>
@@ -46,7 +46,7 @@ public struct VariadicNumber
 <# if (id1 * id2 == (typesArray.Length - 1) * (typesArray.Length - 1)) { #>
             _ => new((<#= cast #>)a.<#= type1 #>Value <#= op #> (<#= cast #>)b.<#= type2 #>Value)
 <# } else { #>
-            (<#= id1 #>, <#= id2 #>) => new((<#= cast #>)a.<#= type1 #>Value <#= op #> (<#= cast #>)b.<#= type2 #>Value),
+            <#= id1 * 10 + id2 #> => new((<#= cast #>)a.<#= type1 #>Value <#= op #> (<#= cast #>)b.<#= type2 #>Value),
 <# } #>
 <# } #>
 <# } #>

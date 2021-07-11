@@ -21,7 +21,7 @@
 // |        DynamicSumAllDouble | 31.88 ns | 0.405 ns | 0.338 ns |
 //
 
-// using BenchmarkDotNet.Running;
-// 
-// BenchmarkRunner.Run<BenchVariadicNumber>();
+using BenchmarkDotNet.Running;
+
+BenchmarkRunner.Run<BenchVariadicNumber>();
 // new BenchVariadicNumber().DynamicSumAllDouble();
