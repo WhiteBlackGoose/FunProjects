@@ -1,0 +1,98 @@
+﻿using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
+
+<# var typesArray = new[]{ "byte", "sbyte", "ushort", "short", "uint", "int", "ulong", "long", "float", "double" }; #>
+<# var types = new System.Collections.Generic.List<(string, int)>(); #>
+<# var i = 0;
+   foreach (var type in typesArray)
+   {
+       types.Add((type, i));
+       i++;
+   }#>
+<# Func<(string, int), (string, int), string> casted = (a, b) => a.Item2 > b.Item2 ? a.Item1 : b.Item1; #>
+
+[StructLayout(LayoutKind.Explicit)]
+public struct VariadicNumber
+{
+    [FieldOffset(0)]
+    private int index;
+
+<# foreach (var (type, _) in types) { #>
+    [FieldOffset(4)]
+    private <#= type #> <#= type #>Value;
+<# } #>
+
+<# foreach (var (type, id) in types) { #>
+    public VariadicNumber(<#= type #> value)
+    {
+<# foreach (var (typeToSkip, _) in types) { #>
+        Unsafe.SkipInit(out <#= typeToSkip #>Value);
+<# } #>
+        <#= type #>Value = value;
+        index = <#= id #>;
+    }
+
+    public static implicit operator VariadicNumber(<#= type #> value) => new(value);
+<# } #>
+
+
+<# foreach (var op in new[] { "+", "-", "*", "/" }) { #>
+    public static VariadicNumber operator <#= op #>(VariadicNumber a, VariadicNumber b)
+        => (a.index, b.index) switch
+        {
+<# foreach (var (type1, id1) in types) { #>
+<# foreach (var (type2, id2) in types) { #>
+<# var cast = casted((type1, id1), (type2, id2)); #>
+<# if (id1 * id2 == (typesArray.Length - 1) * (typesArray.Length - 1)) { #>
+            _ => new((<#= cast #>)a.<#= type1 #>Value <#= op #> (<#= cast #>)b.<#= type2 #>Value)
+<# } else { #>
+            (<#= id1 #>, <#= id2 #>) => new((<#= cast #>)a.<#= type1 #>Value <#= op #> (<#= cast #>)b.<#= type2 #>Value),
+<# } #>
+<# } #>
+<# } #>
+        };
+<# } #>
+
+
+    public override string ToString()
+        => index switch
+        {
+<# foreach (var (type1, id1) in types) { #>
+<# if (id1 == typesArray.Length - 1) { #>
+            _ => <#= type1 #>Value.ToString()
+<# } else { #>
+            <#= id1 #> => <#= type1 #>Value.ToString(),
+<# } #>
+<# } #>
+        };
+
+    public string ToString(bool includeType)
+        => !includeType ? ToString() :
+        index switch
+        {
+<# foreach (var (type1, id1) in types) { #>
+<# if (id1 == typesArray.Length - 1) { #>
+            _ => "<#= type1 #>: " + <#= type1 #>Value.ToString()
+<# } else { #>
+            <#= id1 #> => "<#= type1 #>: " + <#= type1 #>Value.ToString(),
+<# } #>
+<# } #>
+        };
+
+
+    public static bool TryParse(string s, out VariadicNumber res)
+    {
+        res = default;
+<# foreach (var (type, _) in types) { #>
+        if (<#= type #>.TryParse(s, out var <#= type #>Value))
+        {
+            res = new(<#= type #>Value);
+            return true;
+        }
+<# } #>
+        return false;
+    }
+
+    public static VariadicNumber Parse(string s)
+        => TryParse(s, out var res) ? res : throw new();
+}
