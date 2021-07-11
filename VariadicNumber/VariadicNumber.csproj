@@ -39,6 +39,7 @@
 
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.0" />
+    <PackageReference Include="HonkSharp" Version="1.0.1" />
   </ItemGroup>
 
 </Project>
