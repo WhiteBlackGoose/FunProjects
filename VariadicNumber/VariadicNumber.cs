@@ -29,6 +29,7 @@ public struct VariadicNumber
     [FieldOffset(4)]
     private double doubleValue;
 
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(byte value)
     {
         Unsafe.SkipInit(out byteValue);
@@ -46,6 +47,7 @@ public struct VariadicNumber
     }
 
     public static implicit operator VariadicNumber(byte value) => new(value);
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(sbyte value)
     {
         Unsafe.SkipInit(out byteValue);
@@ -63,6 +65,7 @@ public struct VariadicNumber
     }
 
     public static implicit operator VariadicNumber(sbyte value) => new(value);
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(ushort value)
     {
         Unsafe.SkipInit(out byteValue);
@@ -80,6 +83,7 @@ public struct VariadicNumber
     }
 
     public static implicit operator VariadicNumber(ushort value) => new(value);
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(short value)
     {
         Unsafe.SkipInit(out byteValue);
@@ -97,6 +101,7 @@ public struct VariadicNumber
     }
 
     public static implicit operator VariadicNumber(short value) => new(value);
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(uint value)
     {
         Unsafe.SkipInit(out byteValue);
@@ -114,6 +119,7 @@ public struct VariadicNumber
     }
 
     public static implicit operator VariadicNumber(uint value) => new(value);
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(int value)
     {
         Unsafe.SkipInit(out byteValue);
@@ -131,6 +137,7 @@ public struct VariadicNumber
     }
 
     public static implicit operator VariadicNumber(int value) => new(value);
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(ulong value)
     {
         Unsafe.SkipInit(out byteValue);
@@ -148,6 +155,7 @@ public struct VariadicNumber
     }
 
     public static implicit operator VariadicNumber(ulong value) => new(value);
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(long value)
     {
         Unsafe.SkipInit(out byteValue);
@@ -165,6 +173,7 @@ public struct VariadicNumber
     }
 
     public static implicit operator VariadicNumber(long value) => new(value);
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(float value)
     {
         Unsafe.SkipInit(out byteValue);
@@ -182,6 +191,7 @@ public struct VariadicNumber
     }
 
     public static implicit operator VariadicNumber(float value) => new(value);
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(double value)
     {
         Unsafe.SkipInit(out byteValue);
@@ -201,6 +211,7 @@ public struct VariadicNumber
     public static implicit operator VariadicNumber(double value) => new(value);
 
 
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public static VariadicNumber operator +(VariadicNumber a, VariadicNumber b)
         => (a.index * 10 + b.index) switch
         {
@@ -305,6 +316,7 @@ public struct VariadicNumber
             98 => new((double)a.doubleValue + (double)b.floatValue),
             _ => new((double)a.doubleValue + (double)b.doubleValue)
         };
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public static VariadicNumber operator -(VariadicNumber a, VariadicNumber b)
         => (a.index * 10 + b.index) switch
         {
@@ -409,6 +421,7 @@ public struct VariadicNumber
             98 => new((double)a.doubleValue - (double)b.floatValue),
             _ => new((double)a.doubleValue - (double)b.doubleValue)
         };
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public static VariadicNumber operator *(VariadicNumber a, VariadicNumber b)
         => (a.index * 10 + b.index) switch
         {
@@ -513,6 +526,7 @@ public struct VariadicNumber
             98 => new((double)a.doubleValue * (double)b.floatValue),
             _ => new((double)a.doubleValue * (double)b.doubleValue)
         };
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public static VariadicNumber operator /(VariadicNumber a, VariadicNumber b)
         => (a.index * 10 + b.index) switch
         {

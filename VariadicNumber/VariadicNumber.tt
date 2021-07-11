@@ -23,6 +23,7 @@ public struct VariadicNumber
 <# } #>
 
 <# foreach (var (type, id) in types) { #>
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(<#= type #> value)
     {
 <# foreach (var (typeToSkip, _) in types) { #>
@@ -37,6 +38,7 @@ public struct VariadicNumber
 
 
 <# foreach (var op in new[] { "+", "-", "*", "/" }) { #>
+    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
     public static VariadicNumber operator <#= op #>(VariadicNumber a, VariadicNumber b)
         => (a.index * 10 + b.index) switch
         {

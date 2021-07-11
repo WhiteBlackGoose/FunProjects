@@ -24,4 +24,9 @@
 using BenchmarkDotNet.Running;
 
 BenchmarkRunner.Run<BenchVariadicNumber>();
-// new BenchVariadicNumber().DynamicSumAllDouble();
+// var a= new BenchVariadicNumber();
+// 
+// for (int i = 0; i < 10000; i++)
+//     a.VariadicNumberSumAllDouble();
+// a.VariadicNumberSumAllDouble();
+
