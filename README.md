@@ -2,7 +2,7 @@
 
 Fun stuff you can do in different programming languages.
 
-### 1. Strings on stack
+## 1. Strings on stack
 
 Complaining about strings being allocated on heap? We got a solution! Check FunStackStrings project, we
 implemented strings on stack in C# without templates.
@@ -33,7 +33,7 @@ You can set any maximum length of strings allocated on stack in the `code_genera
 re-run it. For now it supports up to 32 letters on stack. Crazy!
 
 
-### 2. Operators for Generic type
+## 2. Operators for Generic type
 
 Fed up with C# that can't into templates? We got a solution! Use `Addition.Do` of two operands to invoke the
 '+' operator!
@@ -72,3 +72,17 @@ Output:
 ```
 
 Subtraction, Division, and Multiplication are available as well.
+
+## 3. Variadic number
+
+```cs
+VariadicNumber a = 5;
+Console.WriteLine($"a = {a.ToString(true)} ; a / 2 = {a / 2}");
+VariadicNumber b = 5.0;
+Console.WriteLine($"b = {b.ToString(true)} ; b / 2 = {b / 2}");
+```
+Output:
+```
+a = int: 5 ; a / 2 = 2
+b = double: 5 ; b / 2 = 2.5
+```
