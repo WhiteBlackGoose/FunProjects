@@ -2,47 +2,16 @@
 using System.Runtime.CompilerServices;
 
 
-[StructLayout(LayoutKind.Explicit)]
 public unsafe struct VariadicNumber
 {
-    [FieldOffset(0)]
     private int index;
 
-    [FieldOffset(8)]
-    private byte byteValue;
-    [FieldOffset(8)]
-    private sbyte sbyteValue;
-    [FieldOffset(8)]
-    private ushort ushortValue;
-    [FieldOffset(8)]
-    private short shortValue;
-    [FieldOffset(8)]
-    private uint uintValue;
-    [FieldOffset(8)]
-    private int intValue;
-    [FieldOffset(8)]
-    private ulong ulongValue;
-    [FieldOffset(8)]
-    private long longValue;
-    [FieldOffset(8)]
-    private float floatValue;
-    [FieldOffset(8)]
-    private double doubleValue;
+    private long value;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(byte value)
     {
-        Unsafe.SkipInit(out byteValue);
-        Unsafe.SkipInit(out sbyteValue);
-        Unsafe.SkipInit(out ushortValue);
-        Unsafe.SkipInit(out shortValue);
-        Unsafe.SkipInit(out uintValue);
-        Unsafe.SkipInit(out intValue);
-        Unsafe.SkipInit(out ulongValue);
-        Unsafe.SkipInit(out longValue);
-        Unsafe.SkipInit(out floatValue);
-        Unsafe.SkipInit(out doubleValue);
-        byteValue = value;
+        this.value = Unsafe.As<byte, long>(ref value);
         index = 0;
     }
 
@@ -50,17 +19,7 @@ public unsafe struct VariadicNumber
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(sbyte value)
     {
-        Unsafe.SkipInit(out byteValue);
-        Unsafe.SkipInit(out sbyteValue);
-        Unsafe.SkipInit(out ushortValue);
-        Unsafe.SkipInit(out shortValue);
-        Unsafe.SkipInit(out uintValue);
-        Unsafe.SkipInit(out intValue);
-        Unsafe.SkipInit(out ulongValue);
-        Unsafe.SkipInit(out longValue);
-        Unsafe.SkipInit(out floatValue);
-        Unsafe.SkipInit(out doubleValue);
-        sbyteValue = value;
+        this.value = Unsafe.As<sbyte, long>(ref value);
         index = 1;
     }
 
@@ -68,17 +27,7 @@ public unsafe struct VariadicNumber
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(ushort value)
     {
-        Unsafe.SkipInit(out byteValue);
-        Unsafe.SkipInit(out sbyteValue);
-        Unsafe.SkipInit(out ushortValue);
-        Unsafe.SkipInit(out shortValue);
-        Unsafe.SkipInit(out uintValue);
-        Unsafe.SkipInit(out intValue);
-        Unsafe.SkipInit(out ulongValue);
-        Unsafe.SkipInit(out longValue);
-        Unsafe.SkipInit(out floatValue);
-        Unsafe.SkipInit(out doubleValue);
-        ushortValue = value;
+        this.value = Unsafe.As<ushort, long>(ref value);
         index = 2;
     }
 
@@ -86,17 +35,7 @@ public unsafe struct VariadicNumber
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(short value)
     {
-        Unsafe.SkipInit(out byteValue);
-        Unsafe.SkipInit(out sbyteValue);
-        Unsafe.SkipInit(out ushortValue);
-        Unsafe.SkipInit(out shortValue);
-        Unsafe.SkipInit(out uintValue);
-        Unsafe.SkipInit(out intValue);
-        Unsafe.SkipInit(out ulongValue);
-        Unsafe.SkipInit(out longValue);
-        Unsafe.SkipInit(out floatValue);
-        Unsafe.SkipInit(out doubleValue);
-        shortValue = value;
+        this.value = Unsafe.As<short, long>(ref value);
         index = 3;
     }
 
@@ -104,17 +43,7 @@ public unsafe struct VariadicNumber
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(uint value)
     {
-        Unsafe.SkipInit(out byteValue);
-        Unsafe.SkipInit(out sbyteValue);
-        Unsafe.SkipInit(out ushortValue);
-        Unsafe.SkipInit(out shortValue);
-        Unsafe.SkipInit(out uintValue);
-        Unsafe.SkipInit(out intValue);
-        Unsafe.SkipInit(out ulongValue);
-        Unsafe.SkipInit(out longValue);
-        Unsafe.SkipInit(out floatValue);
-        Unsafe.SkipInit(out doubleValue);
-        uintValue = value;
+        this.value = Unsafe.As<uint, long>(ref value);
         index = 4;
     }
 
@@ -122,17 +51,7 @@ public unsafe struct VariadicNumber
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(int value)
     {
-        Unsafe.SkipInit(out byteValue);
-        Unsafe.SkipInit(out sbyteValue);
-        Unsafe.SkipInit(out ushortValue);
-        Unsafe.SkipInit(out shortValue);
-        Unsafe.SkipInit(out uintValue);
-        Unsafe.SkipInit(out intValue);
-        Unsafe.SkipInit(out ulongValue);
-        Unsafe.SkipInit(out longValue);
-        Unsafe.SkipInit(out floatValue);
-        Unsafe.SkipInit(out doubleValue);
-        intValue = value;
+        this.value = Unsafe.As<int, long>(ref value);
         index = 5;
     }
 
@@ -140,17 +59,7 @@ public unsafe struct VariadicNumber
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(ulong value)
     {
-        Unsafe.SkipInit(out byteValue);
-        Unsafe.SkipInit(out sbyteValue);
-        Unsafe.SkipInit(out ushortValue);
-        Unsafe.SkipInit(out shortValue);
-        Unsafe.SkipInit(out uintValue);
-        Unsafe.SkipInit(out intValue);
-        Unsafe.SkipInit(out ulongValue);
-        Unsafe.SkipInit(out longValue);
-        Unsafe.SkipInit(out floatValue);
-        Unsafe.SkipInit(out doubleValue);
-        ulongValue = value;
+        this.value = Unsafe.As<ulong, long>(ref value);
         index = 6;
     }
 
@@ -158,17 +67,7 @@ public unsafe struct VariadicNumber
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(long value)
     {
-        Unsafe.SkipInit(out byteValue);
-        Unsafe.SkipInit(out sbyteValue);
-        Unsafe.SkipInit(out ushortValue);
-        Unsafe.SkipInit(out shortValue);
-        Unsafe.SkipInit(out uintValue);
-        Unsafe.SkipInit(out intValue);
-        Unsafe.SkipInit(out ulongValue);
-        Unsafe.SkipInit(out longValue);
-        Unsafe.SkipInit(out floatValue);
-        Unsafe.SkipInit(out doubleValue);
-        longValue = value;
+        this.value = Unsafe.As<long, long>(ref value);
         index = 7;
     }
 
@@ -176,17 +75,7 @@ public unsafe struct VariadicNumber
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(float value)
     {
-        Unsafe.SkipInit(out byteValue);
-        Unsafe.SkipInit(out sbyteValue);
-        Unsafe.SkipInit(out ushortValue);
-        Unsafe.SkipInit(out shortValue);
-        Unsafe.SkipInit(out uintValue);
-        Unsafe.SkipInit(out intValue);
-        Unsafe.SkipInit(out ulongValue);
-        Unsafe.SkipInit(out longValue);
-        Unsafe.SkipInit(out floatValue);
-        Unsafe.SkipInit(out doubleValue);
-        floatValue = value;
+        this.value = Unsafe.As<float, long>(ref value);
         index = 8;
     }
 
@@ -194,17 +83,7 @@ public unsafe struct VariadicNumber
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(double value)
     {
-        Unsafe.SkipInit(out byteValue);
-        Unsafe.SkipInit(out sbyteValue);
-        Unsafe.SkipInit(out ushortValue);
-        Unsafe.SkipInit(out shortValue);
-        Unsafe.SkipInit(out uintValue);
-        Unsafe.SkipInit(out intValue);
-        Unsafe.SkipInit(out ulongValue);
-        Unsafe.SkipInit(out longValue);
-        Unsafe.SkipInit(out floatValue);
-        Unsafe.SkipInit(out doubleValue);
-        doubleValue = value;
+        this.value = Unsafe.As<double, long>(ref value);
         index = 9;
     }
 
@@ -213,16 +92,16 @@ public unsafe struct VariadicNumber
 
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static VariadicNumber operator +(VariadicNumber a, VariadicNumber b)
-        => opAdd[a.index * 10 + b.index](a.longValue, b.longValue);
+        => opAdd[a.index * 10 + b.index](a.value, b.value);
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static VariadicNumber operator -(VariadicNumber a, VariadicNumber b)
-        => opSubtract[a.index * 10 + b.index](a.longValue, b.longValue);
+        => opSubtract[a.index * 10 + b.index](a.value, b.value);
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static VariadicNumber operator *(VariadicNumber a, VariadicNumber b)
-        => opMultiply[a.index * 10 + b.index](a.longValue, b.longValue);
+        => opMultiply[a.index * 10 + b.index](a.value, b.value);
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static VariadicNumber operator /(VariadicNumber a, VariadicNumber b)
-        => opDivide[a.index * 10 + b.index](a.longValue, b.longValue);
+        => opDivide[a.index * 10 + b.index](a.value, b.value);
 
     private static readonly delegate*<long, long, VariadicNumber>[] opAdd = new delegate*<long, long, VariadicNumber>[]
     {
@@ -1450,32 +1329,32 @@ public unsafe struct VariadicNumber
     public override string ToString()
         => index switch
         {
-            0 => byteValue.ToString(),
-            1 => sbyteValue.ToString(),
-            2 => ushortValue.ToString(),
-            3 => shortValue.ToString(),
-            4 => uintValue.ToString(),
-            5 => intValue.ToString(),
-            6 => ulongValue.ToString(),
-            7 => longValue.ToString(),
-            8 => floatValue.ToString(),
-            _ => doubleValue.ToString()
+            0 => Unsafe.As<long, byte>(ref value).ToString(),
+            1 => Unsafe.As<long, sbyte>(ref value).ToString(),
+            2 => Unsafe.As<long, ushort>(ref value).ToString(),
+            3 => Unsafe.As<long, short>(ref value).ToString(),
+            4 => Unsafe.As<long, uint>(ref value).ToString(),
+            5 => Unsafe.As<long, int>(ref value).ToString(),
+            6 => Unsafe.As<long, ulong>(ref value).ToString(),
+            7 => Unsafe.As<long, long>(ref value).ToString(),
+            8 => Unsafe.As<long, float>(ref value).ToString(),
+            _ => Unsafe.As<long, double>(ref value).ToString()
         };
 
     public string ToString(bool includeType)
         => !includeType ? ToString() :
         index switch
         {
-            0 => "byte: " + byteValue.ToString(),
-            1 => "sbyte: " + sbyteValue.ToString(),
-            2 => "ushort: " + ushortValue.ToString(),
-            3 => "short: " + shortValue.ToString(),
-            4 => "uint: " + uintValue.ToString(),
-            5 => "int: " + intValue.ToString(),
-            6 => "ulong: " + ulongValue.ToString(),
-            7 => "long: " + longValue.ToString(),
-            8 => "float: " + floatValue.ToString(),
-            _ => "double: " + doubleValue.ToString()
+            0 => "byte: " + Unsafe.As<long, byte>(ref value).ToString(),
+            1 => "sbyte: " + Unsafe.As<long, sbyte>(ref value).ToString(),
+            2 => "ushort: " + Unsafe.As<long, ushort>(ref value).ToString(),
+            3 => "short: " + Unsafe.As<long, short>(ref value).ToString(),
+            4 => "uint: " + Unsafe.As<long, uint>(ref value).ToString(),
+            5 => "int: " + Unsafe.As<long, int>(ref value).ToString(),
+            6 => "ulong: " + Unsafe.As<long, ulong>(ref value).ToString(),
+            7 => "long: " + Unsafe.As<long, long>(ref value).ToString(),
+            8 => "float: " + Unsafe.As<long, float>(ref value).ToString(),
+            _ => "double: " + Unsafe.As<long, double>(ref value).ToString()
         };
 
 

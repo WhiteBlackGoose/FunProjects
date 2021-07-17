@@ -11,25 +11,17 @@ using System.Runtime.CompilerServices;
    }#>
 <# Func<(string, int), (string, int), string> casted = (a, b) => a.Item2 > b.Item2 ? a.Item1 : b.Item1; #>
 
-[StructLayout(LayoutKind.Explicit)]
 public unsafe struct VariadicNumber
 {
-    [FieldOffset(0)]
     private int index;
 
-<# foreach (var (type, _) in types) { #>
-    [FieldOffset(4)]
-    private <#= type #> <#= type #>Value;
-<# } #>
+    private long value;
 
 <# foreach (var (type, id) in types) { #>
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(<#= type #> value)
     {
-<# foreach (var (typeToSkip, _) in types) { #>
-        Unsafe.SkipInit(out <#= typeToSkip #>Value);
-<# } #>
-        <#= type #>Value = value;
+        this.value = Unsafe.As<<#= type #>, long>(ref value);
         index = <#= id #>;
     }
 
@@ -40,7 +32,7 @@ public unsafe struct VariadicNumber
 <# foreach (var (op, opName) in new[] { ("+", "Add"), ("-", "Subtract"), ("*", "Multiply"), ("/", "Divide") }) { #>
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static VariadicNumber operator <#= op #>(VariadicNumber a, VariadicNumber b)
-        => op<#= opName #>[a.index * 10 + b.index](a.longValue, b.longValue);
+        => op<#= opName #>[a.index * 10 + b.index](a.value, b.value);
 <# } #>
 
 <# foreach (var (op, opName) in new[] { ("+", "Add"), ("-", "Subtract"), ("*", "Multiply"), ("/", "Divide") }) { #>
@@ -72,9 +64,9 @@ public unsafe struct VariadicNumber
         {
 <# foreach (var (type1, id1) in types) { #>
 <# if (id1 == typesArray.Length - 1) { #>
-            _ => <#= type1 #>Value.ToString()
+            _ => Unsafe.As<long, <#= type1 #>>(ref value).ToString()
 <# } else { #>
-            <#= id1 #> => <#= type1 #>Value.ToString(),
+            <#= id1 #> => Unsafe.As<long, <#= type1 #>>(ref value).ToString(),
 <# } #>
 <# } #>
         };
@@ -85,9 +77,9 @@ public unsafe struct VariadicNumber
         {
 <# foreach (var (type1, id1) in types) { #>
 <# if (id1 == typesArray.Length - 1) { #>
-            _ => "<#= type1 #>: " + <#= type1 #>Value.ToString()
+            _ => "<#= type1 #>: " + Unsafe.As<long, <#= type1 #>>(ref value).ToString()
 <# } else { #>
-            <#= id1 #> => "<#= type1 #>: " + <#= type1 #>Value.ToString(),
+            <#= id1 #> => "<#= type1 #>: " + Unsafe.As<long, <#= type1 #>>(ref value).ToString(),
 <# } #>
 <# } #>
         };
