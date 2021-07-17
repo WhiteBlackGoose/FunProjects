@@ -1,0 +1,72 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+
+using System;
+
+<# var types = new[] {
+    ("UInt64", "uint64_t"), ("Int64", "int64_t"), 
+    ("UInt32", "uint32_t"), ("Int32", "int32_t"), 
+    ("UInt16", "uint16_t"), ("Int16", "int16_t"), 
+    ("byte", "uint8_t"),    ("sbyte", "int8_t")
+}; #>
+
+<# foreach (var (backingType, type) in types) { #>
+
+public struct <#= type #>
+{
+    internal <#= backingType #> value;
+    public <#= type #>(<#= backingType #> value)
+        => this.value = value;
+
+    public static implicit operator bool(<#= type #> a) => a.value != 0;
+
+    public static implicit operator <#= type #>(<#= backingType #> a) => new(a);
+    public static implicit operator <#= backingType #>(<#= type #> a) => a.value;
+
+<# var ops = new[] { "+", "-", "*", "/", "|", "&", "^" }; #>
+<# foreach (var op in ops) { #>
+    public static <#= type #> operator <#= op #>(<#= type #> a, <#= type #> b)
+        => new((<#= backingType #>)(a.value <#= op #> b.value));
+<# } #>
+
+<# var ops2 = new[] { "<<", ">>" }; #>
+<# foreach (var op in ops2) { #>
+    public static <#= type #> operator <#= op #>(<#= type #> a, int b)
+        => new((<#= backingType #>)(a.value <#= op #> b));
+<# } #>
+
+<# var ops3 = new[] { "<", ">", ">=", "<=", "==", "!=" }; #>
+<# foreach (var op in ops3) { #>
+    public static bool operator <#= op #>(<#= type #> a, <#= type #> b)
+        => a.value <#= op #> b.value;
+<# } #>
+
+<# if (!type.StartsWith("u")) { #>
+    public static <#= type #> operator -(<#= type #> a)
+        => new((<#= backingType #>)(-a.value));
+<# } #>
+
+<# foreach (var op in "~") { #>
+    public static <#= type #> operator <#= op #>(<#= type #> a)
+        => new((<#= backingType #>)(<#= op #>a.value));
+<# } #>
+
+<# foreach (var (_, otherType) in types.Reverse()) { #>
+<# if (type == otherType) break; #>
+    public static implicit operator <#= type #>(<#= otherType #> other)
+        => new((<#= backingType #>)other.value);
+<# } #>
+
+<# foreach (var (_, otherType) in types) { #>
+<# if (type == otherType) break; #>
+    public static explicit operator <#= type #>(<#= otherType #> other)
+        => new((<#= backingType #>)other.value);
+<# } #>
+
+}
+
+<# } #>
