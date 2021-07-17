@@ -4,7 +4,7 @@
  */
 
 /*
- * Generated at 2021-07-17 13:58 UTC.
+ * Generated at 2021-07-17 14:06 UTC.
  */
 
 using System.Runtime.CompilerServices;
@@ -970,7 +970,7 @@ public unsafe struct VariadicNumber
             _ => Unsafe.As<long, double>(ref value).ToString()
         };
 
-    ///<summary>Equivalent to ToString when set to true ; otherwise, prints info about the type</summary>
+    ///<summary>Equivalent to ToString when set to false ; otherwise, prints info about the type</summary>
     public string ToString(bool includeType)
         => !includeType ? ToString() :
         index switch

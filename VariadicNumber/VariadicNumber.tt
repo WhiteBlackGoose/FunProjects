@@ -84,7 +84,7 @@ public unsafe struct VariadicNumber
 <# } #>
         };
 
-    ///<summary>Equivalent to ToString when set to true ; otherwise, prints info about the type</summary>
+    ///<summary>Equivalent to ToString when set to false ; otherwise, prints info about the type</summary>
     public string ToString(bool includeType)
         => !includeType ? ToString() :
         index switch
