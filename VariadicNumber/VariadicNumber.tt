@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 <# Func<(string, int), (string, int), string> casted = (a, b) => a.Item2 > b.Item2 ? a.Item1 : b.Item1; #>
 
 [StructLayout(LayoutKind.Explicit)]
-public struct VariadicNumber
+public unsafe struct VariadicNumber
 {
     [FieldOffset(0)]
     private int index;
@@ -23,7 +23,7 @@ public struct VariadicNumber
 <# } #>
 
 <# foreach (var (type, id) in types) { #>
-    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(<#= type #> value)
     {
 <# foreach (var (typeToSkip, _) in types) { #>
@@ -37,22 +37,33 @@ public struct VariadicNumber
 <# } #>
 
 
-<# foreach (var op in new[] { "+", "-", "*", "/" }) { #>
-    [System.Runtime.CompilerServices.MethodImpl(System.Runtime.CompilerServices.MethodImplOptions.AggressiveInlining | System.Runtime.CompilerServices.MethodImplOptions.AggressiveOptimization)]
+<# foreach (var (op, opName) in new[] { ("+", "Add"), ("-", "Subtract"), ("*", "Multiply"), ("/", "Divide") }) { #>
+    [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static VariadicNumber operator <#= op #>(VariadicNumber a, VariadicNumber b)
-        => (a.index * 10 + b.index) switch
-        {
+        => op<#= opName #>[a.index * 10 + b.index](a.longValue, b.longValue);
+<# } #>
+
+<# foreach (var (op, opName) in new[] { ("+", "Add"), ("-", "Subtract"), ("*", "Multiply"), ("/", "Divide") }) { #>
+    private static readonly delegate*<long, long, VariadicNumber>[] op<#= opName #> = new delegate*<long, long, VariadicNumber>[]
+    {
+<# foreach (var (type1, id1) in types) { #>
+<# foreach (var (type2, id2) in types) { #>
+        &Op<#= opName #><#= type1 #><#= type2 #>,
+<# } #>
+<# } #>
+    };
+<# } #>
+
+<# foreach (var (op, opName) in new[] { ("+", "Add"), ("-", "Subtract"), ("*", "Multiply"), ("/", "Divide") }) { #>
+
 <# foreach (var (type1, id1) in types) { #>
 <# foreach (var (type2, id2) in types) { #>
 <# var cast = casted((type1, id1), (type2, id2)); #>
-<# if (id1 * id2 == (typesArray.Length - 1) * (typesArray.Length - 1)) { #>
-            _ => new((<#= cast #>)a.<#= type1 #>Value <#= op #> (<#= cast #>)b.<#= type2 #>Value)
-<# } else { #>
-            <#= id1 * 10 + id2 #> => new((<#= cast #>)a.<#= type1 #>Value <#= op #> (<#= cast #>)b.<#= type2 #>Value),
+    private static VariadicNumber Op<#= opName #><#= type1 #><#= type2 #>(long left, long right)
+        => new((<#= cast #>)((<#= cast #>)Unsafe.As<long, <#= type1 #>>(ref left) <#= op #> (<#= cast #>)Unsafe.As<long, <#= type2 #>>(ref right)));
 <# } #>
 <# } #>
-<# } #>
-        };
+
 <# } #>
 
 

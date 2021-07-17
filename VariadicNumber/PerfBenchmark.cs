@@ -1,5 +1,7 @@
 ﻿using BenchmarkDotNet.Attributes;
 using HonkSharp.Fluency;
+using System.Linq;
+
 
 public class BenchVariadicNumber
 {
