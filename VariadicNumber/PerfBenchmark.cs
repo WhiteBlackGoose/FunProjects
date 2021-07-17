@@ -37,7 +37,7 @@ public class BenchVariadicNumber
     // }
 
     [Benchmark(OperationsPerInvoke = OperationsPerInvoke)]
-    public void VariadicNumberSumAllDouble()
+    public void VariadicNumberSumAllDoubleVtable()
     {
         VariadicNumber a = 0d;
         foreach (var el in numbersDouble)
@@ -46,7 +46,15 @@ public class BenchVariadicNumber
         currId = (currId + 1) % OperationsPerInvoke;
     }
 
-
+    [Benchmark(OperationsPerInvoke = OperationsPerInvoke)]
+    public void VariadicNumberSumAllDoubleBinary()
+    {
+        VariadicNumber a = 0d;
+        foreach (var el in numbersDouble)
+            a = VariadicNumber.Add(a, VariadicNumber.Divide(VariadicNumber.Add(el, 1), VariadicNumber.Add(a, 2)));
+        numbersDouble[currId] = a;
+        currId = (currId + 1) % OperationsPerInvoke;
+    }
 
     // [Benchmark(OperationsPerInvoke = OperationsPerInvoke)]
     // public void DynamicSumAllInt()

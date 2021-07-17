@@ -4,7 +4,7 @@
  */
 
 /*
- * Generated at 2021-07-17 14:06 UTC.
+ * Generated at 2021-07-17 14:33 UTC.
  */
 
 using System.Runtime.CompilerServices;
@@ -139,6 +139,2888 @@ public unsafe struct VariadicNumber
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static VariadicNumber operator /(VariadicNumber a, VariadicNumber b)
         => opDivide[a.index * 10 + b.index](a.value, b.value);
+
+
+    ///<summary>Performs the operator of '+' and upcasts smaller numbers to bigger (e. g. int to double). 
+    ///Unlike normal operator + which uses vtable of two objects, this one relies on binary search of
+    ///the necessary id.</summary>
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static VariadicNumber Add(VariadicNumber a, VariadicNumber b)
+    {
+        var ind = a.index * 10 + b.index;
+        
+        if (ind < 49)
+        {
+            
+            if (ind < 24)
+            {
+                
+                if (ind < 12)
+                {
+                    
+                    if (ind < 6)
+                    {
+                        
+                        if (ind < 3)
+                        {
+                            
+                            if (ind < 1)
+                            {
+                                
+                                if (ind == 0)
+                                    return new((byte)((byte)Unsafe.As<long, byte>(ref a.value) + (byte)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((sbyte)((sbyte)Unsafe.As<long, byte>(ref a.value) + (sbyte)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 2)
+                                    return new((ushort)((ushort)Unsafe.As<long, byte>(ref a.value) + (ushort)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, byte>(ref a.value) + (short)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 5)
+                            {
+                                
+                                if (ind == 4)
+                                    return new((uint)((uint)Unsafe.As<long, byte>(ref a.value) + (uint)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, byte>(ref a.value) + (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, byte>(ref a.value) + (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 9)
+                        {
+                            
+                            if (ind < 8)
+                            {
+                                
+                                if (ind == 7)
+                                    return new((long)((long)Unsafe.As<long, byte>(ref a.value) + (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, byte>(ref a.value) + (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, byte>(ref a.value) + (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 11)
+                            {
+                                
+                                if (ind == 10)
+                                    return new((sbyte)((sbyte)Unsafe.As<long, sbyte>(ref a.value) + (sbyte)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((sbyte)((sbyte)Unsafe.As<long, sbyte>(ref a.value) + (sbyte)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ushort)((ushort)Unsafe.As<long, sbyte>(ref a.value) + (ushort)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 18)
+                    {
+                        
+                        if (ind < 15)
+                        {
+                            
+                            if (ind < 14)
+                            {
+                                
+                                if (ind == 13)
+                                    return new((short)((short)Unsafe.As<long, sbyte>(ref a.value) + (short)Unsafe.As<long, short>(ref b.value)));
+                                else
+                                    return new((uint)((uint)Unsafe.As<long, sbyte>(ref a.value) + (uint)Unsafe.As<long, uint>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((int)((int)Unsafe.As<long, sbyte>(ref a.value) + (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 17)
+                            {
+                                
+                                if (ind == 16)
+                                    return new((ulong)((ulong)Unsafe.As<long, sbyte>(ref a.value) + (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, sbyte>(ref a.value) + (long)Unsafe.As<long, long>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, sbyte>(ref a.value) + (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 21)
+                        {
+                            
+                            if (ind < 20)
+                            {
+                                
+                                if (ind == 19)
+                                    return new((double)((double)Unsafe.As<long, sbyte>(ref a.value) + (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((ushort)((ushort)Unsafe.As<long, ushort>(ref a.value) + (ushort)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ushort)((ushort)Unsafe.As<long, ushort>(ref a.value) + (ushort)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 23)
+                            {
+                                
+                                if (ind == 22)
+                                    return new((ushort)((ushort)Unsafe.As<long, ushort>(ref a.value) + (ushort)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, ushort>(ref a.value) + (short)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, ushort>(ref a.value) + (uint)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+            else
+            {
+                
+                if (ind < 37)
+                {
+                    
+                    if (ind < 31)
+                    {
+                        
+                        if (ind < 28)
+                        {
+                            
+                            if (ind < 26)
+                            {
+                                
+                                if (ind == 25)
+                                    return new((int)((int)Unsafe.As<long, ushort>(ref a.value) + (int)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, ushort>(ref a.value) + (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 27)
+                                    return new((long)((long)Unsafe.As<long, ushort>(ref a.value) + (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, ushort>(ref a.value) + (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 30)
+                            {
+                                
+                                if (ind == 29)
+                                    return new((double)((double)Unsafe.As<long, ushort>(ref a.value) + (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, short>(ref a.value) + (short)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((short)((short)Unsafe.As<long, short>(ref a.value) + (short)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 34)
+                        {
+                            
+                            if (ind < 33)
+                            {
+                                
+                                if (ind == 32)
+                                    return new((short)((short)Unsafe.As<long, short>(ref a.value) + (short)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, short>(ref a.value) + (short)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, short>(ref a.value) + (uint)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 36)
+                            {
+                                
+                                if (ind == 35)
+                                    return new((int)((int)Unsafe.As<long, short>(ref a.value) + (int)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, short>(ref a.value) + (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((long)((long)Unsafe.As<long, short>(ref a.value) + (long)Unsafe.As<long, long>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 43)
+                    {
+                        
+                        if (ind < 40)
+                        {
+                            
+                            if (ind < 39)
+                            {
+                                
+                                if (ind == 38)
+                                    return new((float)((float)Unsafe.As<long, short>(ref a.value) + (float)Unsafe.As<long, float>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, short>(ref a.value) + (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) + (uint)Unsafe.As<long, byte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 42)
+                            {
+                                
+                                if (ind == 41)
+                                    return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) + (uint)Unsafe.As<long, sbyte>(ref b.value)));
+                                else
+                                    return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) + (uint)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) + (uint)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 46)
+                        {
+                            
+                            if (ind < 45)
+                            {
+                                
+                                if (ind == 44)
+                                    return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) + (uint)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, uint>(ref a.value) + (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, uint>(ref a.value) + (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 48)
+                            {
+                                
+                                if (ind == 47)
+                                    return new((long)((long)Unsafe.As<long, uint>(ref a.value) + (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, uint>(ref a.value) + (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, uint>(ref a.value) + (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+        else
+        {
+            
+            if (ind < 74)
+            {
+                
+                if (ind < 62)
+                {
+                    
+                    if (ind < 56)
+                    {
+                        
+                        if (ind < 53)
+                        {
+                            
+                            if (ind < 51)
+                            {
+                                
+                                if (ind == 50)
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) + (int)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) + (int)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 52)
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) + (int)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) + (int)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 55)
+                            {
+                                
+                                if (ind == 54)
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) + (int)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) + (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, int>(ref a.value) + (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 59)
+                        {
+                            
+                            if (ind < 58)
+                            {
+                                
+                                if (ind == 57)
+                                    return new((long)((long)Unsafe.As<long, int>(ref a.value) + (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, int>(ref a.value) + (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, int>(ref a.value) + (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 61)
+                            {
+                                
+                                if (ind == 60)
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) + (ulong)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) + (ulong)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) + (ulong)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 68)
+                    {
+                        
+                        if (ind < 65)
+                        {
+                            
+                            if (ind < 64)
+                            {
+                                
+                                if (ind == 63)
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) + (ulong)Unsafe.As<long, short>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) + (ulong)Unsafe.As<long, uint>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) + (ulong)Unsafe.As<long, int>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 67)
+                            {
+                                
+                                if (ind == 66)
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) + (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, ulong>(ref a.value) + (long)Unsafe.As<long, long>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, ulong>(ref a.value) + (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 71)
+                        {
+                            
+                            if (ind < 70)
+                            {
+                                
+                                if (ind == 69)
+                                    return new((double)((double)Unsafe.As<long, ulong>(ref a.value) + (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) + (long)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((long)((long)Unsafe.As<long, long>(ref a.value) + (long)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 73)
+                            {
+                                
+                                if (ind == 72)
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) + (long)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) + (long)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((long)((long)Unsafe.As<long, long>(ref a.value) + (long)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+            else
+            {
+                
+                if (ind < 87)
+                {
+                    
+                    if (ind < 81)
+                    {
+                        
+                        if (ind < 78)
+                        {
+                            
+                            if (ind < 76)
+                            {
+                                
+                                if (ind == 75)
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) + (long)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) + (long)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 77)
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) + (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, long>(ref a.value) + (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 80)
+                            {
+                                
+                                if (ind == 79)
+                                    return new((double)((double)Unsafe.As<long, long>(ref a.value) + (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) + (float)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, float>(ref a.value) + (float)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 84)
+                        {
+                            
+                            if (ind < 83)
+                            {
+                                
+                                if (ind == 82)
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) + (float)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) + (float)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, float>(ref a.value) + (float)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 86)
+                            {
+                                
+                                if (ind == 85)
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) + (float)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) + (float)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, float>(ref a.value) + (float)Unsafe.As<long, long>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 93)
+                    {
+                        
+                        if (ind < 90)
+                        {
+                            
+                            if (ind < 89)
+                            {
+                                
+                                if (ind == 88)
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) + (float)Unsafe.As<long, float>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, float>(ref a.value) + (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) + (double)Unsafe.As<long, byte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 92)
+                            {
+                                
+                                if (ind == 91)
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) + (double)Unsafe.As<long, sbyte>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) + (double)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) + (double)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 96)
+                        {
+                            
+                            if (ind < 95)
+                            {
+                                
+                                if (ind == 94)
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) + (double)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) + (double)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) + (double)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 98)
+                            {
+                                
+                                if (ind == 97)
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) + (double)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) + (double)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) + (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+    ///<summary>Performs the operator of '-' and upcasts smaller numbers to bigger (e. g. int to double). 
+    ///Unlike normal operator - which uses vtable of two objects, this one relies on binary search of
+    ///the necessary id.</summary>
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static VariadicNumber Subtract(VariadicNumber a, VariadicNumber b)
+    {
+        var ind = a.index * 10 + b.index;
+        
+        if (ind < 49)
+        {
+            
+            if (ind < 24)
+            {
+                
+                if (ind < 12)
+                {
+                    
+                    if (ind < 6)
+                    {
+                        
+                        if (ind < 3)
+                        {
+                            
+                            if (ind < 1)
+                            {
+                                
+                                if (ind == 0)
+                                    return new((byte)((byte)Unsafe.As<long, byte>(ref a.value) - (byte)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((sbyte)((sbyte)Unsafe.As<long, byte>(ref a.value) - (sbyte)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 2)
+                                    return new((ushort)((ushort)Unsafe.As<long, byte>(ref a.value) - (ushort)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, byte>(ref a.value) - (short)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 5)
+                            {
+                                
+                                if (ind == 4)
+                                    return new((uint)((uint)Unsafe.As<long, byte>(ref a.value) - (uint)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, byte>(ref a.value) - (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, byte>(ref a.value) - (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 9)
+                        {
+                            
+                            if (ind < 8)
+                            {
+                                
+                                if (ind == 7)
+                                    return new((long)((long)Unsafe.As<long, byte>(ref a.value) - (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, byte>(ref a.value) - (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, byte>(ref a.value) - (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 11)
+                            {
+                                
+                                if (ind == 10)
+                                    return new((sbyte)((sbyte)Unsafe.As<long, sbyte>(ref a.value) - (sbyte)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((sbyte)((sbyte)Unsafe.As<long, sbyte>(ref a.value) - (sbyte)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ushort)((ushort)Unsafe.As<long, sbyte>(ref a.value) - (ushort)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 18)
+                    {
+                        
+                        if (ind < 15)
+                        {
+                            
+                            if (ind < 14)
+                            {
+                                
+                                if (ind == 13)
+                                    return new((short)((short)Unsafe.As<long, sbyte>(ref a.value) - (short)Unsafe.As<long, short>(ref b.value)));
+                                else
+                                    return new((uint)((uint)Unsafe.As<long, sbyte>(ref a.value) - (uint)Unsafe.As<long, uint>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((int)((int)Unsafe.As<long, sbyte>(ref a.value) - (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 17)
+                            {
+                                
+                                if (ind == 16)
+                                    return new((ulong)((ulong)Unsafe.As<long, sbyte>(ref a.value) - (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, sbyte>(ref a.value) - (long)Unsafe.As<long, long>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, sbyte>(ref a.value) - (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 21)
+                        {
+                            
+                            if (ind < 20)
+                            {
+                                
+                                if (ind == 19)
+                                    return new((double)((double)Unsafe.As<long, sbyte>(ref a.value) - (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((ushort)((ushort)Unsafe.As<long, ushort>(ref a.value) - (ushort)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ushort)((ushort)Unsafe.As<long, ushort>(ref a.value) - (ushort)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 23)
+                            {
+                                
+                                if (ind == 22)
+                                    return new((ushort)((ushort)Unsafe.As<long, ushort>(ref a.value) - (ushort)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, ushort>(ref a.value) - (short)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, ushort>(ref a.value) - (uint)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+            else
+            {
+                
+                if (ind < 37)
+                {
+                    
+                    if (ind < 31)
+                    {
+                        
+                        if (ind < 28)
+                        {
+                            
+                            if (ind < 26)
+                            {
+                                
+                                if (ind == 25)
+                                    return new((int)((int)Unsafe.As<long, ushort>(ref a.value) - (int)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, ushort>(ref a.value) - (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 27)
+                                    return new((long)((long)Unsafe.As<long, ushort>(ref a.value) - (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, ushort>(ref a.value) - (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 30)
+                            {
+                                
+                                if (ind == 29)
+                                    return new((double)((double)Unsafe.As<long, ushort>(ref a.value) - (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, short>(ref a.value) - (short)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((short)((short)Unsafe.As<long, short>(ref a.value) - (short)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 34)
+                        {
+                            
+                            if (ind < 33)
+                            {
+                                
+                                if (ind == 32)
+                                    return new((short)((short)Unsafe.As<long, short>(ref a.value) - (short)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, short>(ref a.value) - (short)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, short>(ref a.value) - (uint)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 36)
+                            {
+                                
+                                if (ind == 35)
+                                    return new((int)((int)Unsafe.As<long, short>(ref a.value) - (int)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, short>(ref a.value) - (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((long)((long)Unsafe.As<long, short>(ref a.value) - (long)Unsafe.As<long, long>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 43)
+                    {
+                        
+                        if (ind < 40)
+                        {
+                            
+                            if (ind < 39)
+                            {
+                                
+                                if (ind == 38)
+                                    return new((float)((float)Unsafe.As<long, short>(ref a.value) - (float)Unsafe.As<long, float>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, short>(ref a.value) - (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) - (uint)Unsafe.As<long, byte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 42)
+                            {
+                                
+                                if (ind == 41)
+                                    return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) - (uint)Unsafe.As<long, sbyte>(ref b.value)));
+                                else
+                                    return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) - (uint)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) - (uint)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 46)
+                        {
+                            
+                            if (ind < 45)
+                            {
+                                
+                                if (ind == 44)
+                                    return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) - (uint)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, uint>(ref a.value) - (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, uint>(ref a.value) - (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 48)
+                            {
+                                
+                                if (ind == 47)
+                                    return new((long)((long)Unsafe.As<long, uint>(ref a.value) - (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, uint>(ref a.value) - (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, uint>(ref a.value) - (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+        else
+        {
+            
+            if (ind < 74)
+            {
+                
+                if (ind < 62)
+                {
+                    
+                    if (ind < 56)
+                    {
+                        
+                        if (ind < 53)
+                        {
+                            
+                            if (ind < 51)
+                            {
+                                
+                                if (ind == 50)
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) - (int)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) - (int)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 52)
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) - (int)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) - (int)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 55)
+                            {
+                                
+                                if (ind == 54)
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) - (int)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) - (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, int>(ref a.value) - (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 59)
+                        {
+                            
+                            if (ind < 58)
+                            {
+                                
+                                if (ind == 57)
+                                    return new((long)((long)Unsafe.As<long, int>(ref a.value) - (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, int>(ref a.value) - (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, int>(ref a.value) - (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 61)
+                            {
+                                
+                                if (ind == 60)
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) - (ulong)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) - (ulong)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) - (ulong)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 68)
+                    {
+                        
+                        if (ind < 65)
+                        {
+                            
+                            if (ind < 64)
+                            {
+                                
+                                if (ind == 63)
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) - (ulong)Unsafe.As<long, short>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) - (ulong)Unsafe.As<long, uint>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) - (ulong)Unsafe.As<long, int>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 67)
+                            {
+                                
+                                if (ind == 66)
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) - (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, ulong>(ref a.value) - (long)Unsafe.As<long, long>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, ulong>(ref a.value) - (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 71)
+                        {
+                            
+                            if (ind < 70)
+                            {
+                                
+                                if (ind == 69)
+                                    return new((double)((double)Unsafe.As<long, ulong>(ref a.value) - (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) - (long)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((long)((long)Unsafe.As<long, long>(ref a.value) - (long)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 73)
+                            {
+                                
+                                if (ind == 72)
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) - (long)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) - (long)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((long)((long)Unsafe.As<long, long>(ref a.value) - (long)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+            else
+            {
+                
+                if (ind < 87)
+                {
+                    
+                    if (ind < 81)
+                    {
+                        
+                        if (ind < 78)
+                        {
+                            
+                            if (ind < 76)
+                            {
+                                
+                                if (ind == 75)
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) - (long)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) - (long)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 77)
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) - (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, long>(ref a.value) - (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 80)
+                            {
+                                
+                                if (ind == 79)
+                                    return new((double)((double)Unsafe.As<long, long>(ref a.value) - (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) - (float)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, float>(ref a.value) - (float)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 84)
+                        {
+                            
+                            if (ind < 83)
+                            {
+                                
+                                if (ind == 82)
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) - (float)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) - (float)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, float>(ref a.value) - (float)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 86)
+                            {
+                                
+                                if (ind == 85)
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) - (float)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) - (float)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, float>(ref a.value) - (float)Unsafe.As<long, long>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 93)
+                    {
+                        
+                        if (ind < 90)
+                        {
+                            
+                            if (ind < 89)
+                            {
+                                
+                                if (ind == 88)
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) - (float)Unsafe.As<long, float>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, float>(ref a.value) - (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) - (double)Unsafe.As<long, byte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 92)
+                            {
+                                
+                                if (ind == 91)
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) - (double)Unsafe.As<long, sbyte>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) - (double)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) - (double)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 96)
+                        {
+                            
+                            if (ind < 95)
+                            {
+                                
+                                if (ind == 94)
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) - (double)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) - (double)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) - (double)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 98)
+                            {
+                                
+                                if (ind == 97)
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) - (double)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) - (double)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) - (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+    ///<summary>Performs the operator of '*' and upcasts smaller numbers to bigger (e. g. int to double). 
+    ///Unlike normal operator * which uses vtable of two objects, this one relies on binary search of
+    ///the necessary id.</summary>
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static VariadicNumber Multiply(VariadicNumber a, VariadicNumber b)
+    {
+        var ind = a.index * 10 + b.index;
+        
+        if (ind < 49)
+        {
+            
+            if (ind < 24)
+            {
+                
+                if (ind < 12)
+                {
+                    
+                    if (ind < 6)
+                    {
+                        
+                        if (ind < 3)
+                        {
+                            
+                            if (ind < 1)
+                            {
+                                
+                                if (ind == 0)
+                                    return new((byte)((byte)Unsafe.As<long, byte>(ref a.value) * (byte)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((sbyte)((sbyte)Unsafe.As<long, byte>(ref a.value) * (sbyte)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 2)
+                                    return new((ushort)((ushort)Unsafe.As<long, byte>(ref a.value) * (ushort)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, byte>(ref a.value) * (short)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 5)
+                            {
+                                
+                                if (ind == 4)
+                                    return new((uint)((uint)Unsafe.As<long, byte>(ref a.value) * (uint)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, byte>(ref a.value) * (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, byte>(ref a.value) * (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 9)
+                        {
+                            
+                            if (ind < 8)
+                            {
+                                
+                                if (ind == 7)
+                                    return new((long)((long)Unsafe.As<long, byte>(ref a.value) * (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, byte>(ref a.value) * (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, byte>(ref a.value) * (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 11)
+                            {
+                                
+                                if (ind == 10)
+                                    return new((sbyte)((sbyte)Unsafe.As<long, sbyte>(ref a.value) * (sbyte)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((sbyte)((sbyte)Unsafe.As<long, sbyte>(ref a.value) * (sbyte)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ushort)((ushort)Unsafe.As<long, sbyte>(ref a.value) * (ushort)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 18)
+                    {
+                        
+                        if (ind < 15)
+                        {
+                            
+                            if (ind < 14)
+                            {
+                                
+                                if (ind == 13)
+                                    return new((short)((short)Unsafe.As<long, sbyte>(ref a.value) * (short)Unsafe.As<long, short>(ref b.value)));
+                                else
+                                    return new((uint)((uint)Unsafe.As<long, sbyte>(ref a.value) * (uint)Unsafe.As<long, uint>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((int)((int)Unsafe.As<long, sbyte>(ref a.value) * (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 17)
+                            {
+                                
+                                if (ind == 16)
+                                    return new((ulong)((ulong)Unsafe.As<long, sbyte>(ref a.value) * (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, sbyte>(ref a.value) * (long)Unsafe.As<long, long>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, sbyte>(ref a.value) * (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 21)
+                        {
+                            
+                            if (ind < 20)
+                            {
+                                
+                                if (ind == 19)
+                                    return new((double)((double)Unsafe.As<long, sbyte>(ref a.value) * (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((ushort)((ushort)Unsafe.As<long, ushort>(ref a.value) * (ushort)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ushort)((ushort)Unsafe.As<long, ushort>(ref a.value) * (ushort)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 23)
+                            {
+                                
+                                if (ind == 22)
+                                    return new((ushort)((ushort)Unsafe.As<long, ushort>(ref a.value) * (ushort)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, ushort>(ref a.value) * (short)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, ushort>(ref a.value) * (uint)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+            else
+            {
+                
+                if (ind < 37)
+                {
+                    
+                    if (ind < 31)
+                    {
+                        
+                        if (ind < 28)
+                        {
+                            
+                            if (ind < 26)
+                            {
+                                
+                                if (ind == 25)
+                                    return new((int)((int)Unsafe.As<long, ushort>(ref a.value) * (int)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, ushort>(ref a.value) * (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 27)
+                                    return new((long)((long)Unsafe.As<long, ushort>(ref a.value) * (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, ushort>(ref a.value) * (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 30)
+                            {
+                                
+                                if (ind == 29)
+                                    return new((double)((double)Unsafe.As<long, ushort>(ref a.value) * (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, short>(ref a.value) * (short)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((short)((short)Unsafe.As<long, short>(ref a.value) * (short)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 34)
+                        {
+                            
+                            if (ind < 33)
+                            {
+                                
+                                if (ind == 32)
+                                    return new((short)((short)Unsafe.As<long, short>(ref a.value) * (short)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, short>(ref a.value) * (short)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, short>(ref a.value) * (uint)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 36)
+                            {
+                                
+                                if (ind == 35)
+                                    return new((int)((int)Unsafe.As<long, short>(ref a.value) * (int)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, short>(ref a.value) * (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((long)((long)Unsafe.As<long, short>(ref a.value) * (long)Unsafe.As<long, long>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 43)
+                    {
+                        
+                        if (ind < 40)
+                        {
+                            
+                            if (ind < 39)
+                            {
+                                
+                                if (ind == 38)
+                                    return new((float)((float)Unsafe.As<long, short>(ref a.value) * (float)Unsafe.As<long, float>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, short>(ref a.value) * (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) * (uint)Unsafe.As<long, byte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 42)
+                            {
+                                
+                                if (ind == 41)
+                                    return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) * (uint)Unsafe.As<long, sbyte>(ref b.value)));
+                                else
+                                    return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) * (uint)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) * (uint)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 46)
+                        {
+                            
+                            if (ind < 45)
+                            {
+                                
+                                if (ind == 44)
+                                    return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) * (uint)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, uint>(ref a.value) * (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, uint>(ref a.value) * (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 48)
+                            {
+                                
+                                if (ind == 47)
+                                    return new((long)((long)Unsafe.As<long, uint>(ref a.value) * (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, uint>(ref a.value) * (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, uint>(ref a.value) * (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+        else
+        {
+            
+            if (ind < 74)
+            {
+                
+                if (ind < 62)
+                {
+                    
+                    if (ind < 56)
+                    {
+                        
+                        if (ind < 53)
+                        {
+                            
+                            if (ind < 51)
+                            {
+                                
+                                if (ind == 50)
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) * (int)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) * (int)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 52)
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) * (int)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) * (int)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 55)
+                            {
+                                
+                                if (ind == 54)
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) * (int)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) * (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, int>(ref a.value) * (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 59)
+                        {
+                            
+                            if (ind < 58)
+                            {
+                                
+                                if (ind == 57)
+                                    return new((long)((long)Unsafe.As<long, int>(ref a.value) * (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, int>(ref a.value) * (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, int>(ref a.value) * (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 61)
+                            {
+                                
+                                if (ind == 60)
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) * (ulong)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) * (ulong)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) * (ulong)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 68)
+                    {
+                        
+                        if (ind < 65)
+                        {
+                            
+                            if (ind < 64)
+                            {
+                                
+                                if (ind == 63)
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) * (ulong)Unsafe.As<long, short>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) * (ulong)Unsafe.As<long, uint>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) * (ulong)Unsafe.As<long, int>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 67)
+                            {
+                                
+                                if (ind == 66)
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) * (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, ulong>(ref a.value) * (long)Unsafe.As<long, long>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, ulong>(ref a.value) * (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 71)
+                        {
+                            
+                            if (ind < 70)
+                            {
+                                
+                                if (ind == 69)
+                                    return new((double)((double)Unsafe.As<long, ulong>(ref a.value) * (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) * (long)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((long)((long)Unsafe.As<long, long>(ref a.value) * (long)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 73)
+                            {
+                                
+                                if (ind == 72)
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) * (long)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) * (long)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((long)((long)Unsafe.As<long, long>(ref a.value) * (long)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+            else
+            {
+                
+                if (ind < 87)
+                {
+                    
+                    if (ind < 81)
+                    {
+                        
+                        if (ind < 78)
+                        {
+                            
+                            if (ind < 76)
+                            {
+                                
+                                if (ind == 75)
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) * (long)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) * (long)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 77)
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) * (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, long>(ref a.value) * (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 80)
+                            {
+                                
+                                if (ind == 79)
+                                    return new((double)((double)Unsafe.As<long, long>(ref a.value) * (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) * (float)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, float>(ref a.value) * (float)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 84)
+                        {
+                            
+                            if (ind < 83)
+                            {
+                                
+                                if (ind == 82)
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) * (float)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) * (float)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, float>(ref a.value) * (float)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 86)
+                            {
+                                
+                                if (ind == 85)
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) * (float)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) * (float)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, float>(ref a.value) * (float)Unsafe.As<long, long>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 93)
+                    {
+                        
+                        if (ind < 90)
+                        {
+                            
+                            if (ind < 89)
+                            {
+                                
+                                if (ind == 88)
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) * (float)Unsafe.As<long, float>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, float>(ref a.value) * (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) * (double)Unsafe.As<long, byte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 92)
+                            {
+                                
+                                if (ind == 91)
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) * (double)Unsafe.As<long, sbyte>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) * (double)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) * (double)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 96)
+                        {
+                            
+                            if (ind < 95)
+                            {
+                                
+                                if (ind == 94)
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) * (double)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) * (double)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) * (double)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 98)
+                            {
+                                
+                                if (ind == 97)
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) * (double)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) * (double)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) * (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+    ///<summary>Performs the operator of '/' and upcasts smaller numbers to bigger (e. g. int to double). 
+    ///Unlike normal operator / which uses vtable of two objects, this one relies on binary search of
+    ///the necessary id.</summary>
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static VariadicNumber Divide(VariadicNumber a, VariadicNumber b)
+    {
+        var ind = a.index * 10 + b.index;
+        
+        if (ind < 49)
+        {
+            
+            if (ind < 24)
+            {
+                
+                if (ind < 12)
+                {
+                    
+                    if (ind < 6)
+                    {
+                        
+                        if (ind < 3)
+                        {
+                            
+                            if (ind < 1)
+                            {
+                                
+                                if (ind == 0)
+                                    return new((byte)((byte)Unsafe.As<long, byte>(ref a.value) / (byte)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((sbyte)((sbyte)Unsafe.As<long, byte>(ref a.value) / (sbyte)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 2)
+                                    return new((ushort)((ushort)Unsafe.As<long, byte>(ref a.value) / (ushort)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, byte>(ref a.value) / (short)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 5)
+                            {
+                                
+                                if (ind == 4)
+                                    return new((uint)((uint)Unsafe.As<long, byte>(ref a.value) / (uint)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, byte>(ref a.value) / (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, byte>(ref a.value) / (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 9)
+                        {
+                            
+                            if (ind < 8)
+                            {
+                                
+                                if (ind == 7)
+                                    return new((long)((long)Unsafe.As<long, byte>(ref a.value) / (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, byte>(ref a.value) / (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, byte>(ref a.value) / (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 11)
+                            {
+                                
+                                if (ind == 10)
+                                    return new((sbyte)((sbyte)Unsafe.As<long, sbyte>(ref a.value) / (sbyte)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((sbyte)((sbyte)Unsafe.As<long, sbyte>(ref a.value) / (sbyte)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ushort)((ushort)Unsafe.As<long, sbyte>(ref a.value) / (ushort)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 18)
+                    {
+                        
+                        if (ind < 15)
+                        {
+                            
+                            if (ind < 14)
+                            {
+                                
+                                if (ind == 13)
+                                    return new((short)((short)Unsafe.As<long, sbyte>(ref a.value) / (short)Unsafe.As<long, short>(ref b.value)));
+                                else
+                                    return new((uint)((uint)Unsafe.As<long, sbyte>(ref a.value) / (uint)Unsafe.As<long, uint>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((int)((int)Unsafe.As<long, sbyte>(ref a.value) / (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 17)
+                            {
+                                
+                                if (ind == 16)
+                                    return new((ulong)((ulong)Unsafe.As<long, sbyte>(ref a.value) / (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, sbyte>(ref a.value) / (long)Unsafe.As<long, long>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, sbyte>(ref a.value) / (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 21)
+                        {
+                            
+                            if (ind < 20)
+                            {
+                                
+                                if (ind == 19)
+                                    return new((double)((double)Unsafe.As<long, sbyte>(ref a.value) / (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((ushort)((ushort)Unsafe.As<long, ushort>(ref a.value) / (ushort)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ushort)((ushort)Unsafe.As<long, ushort>(ref a.value) / (ushort)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 23)
+                            {
+                                
+                                if (ind == 22)
+                                    return new((ushort)((ushort)Unsafe.As<long, ushort>(ref a.value) / (ushort)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, ushort>(ref a.value) / (short)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, ushort>(ref a.value) / (uint)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+            else
+            {
+                
+                if (ind < 37)
+                {
+                    
+                    if (ind < 31)
+                    {
+                        
+                        if (ind < 28)
+                        {
+                            
+                            if (ind < 26)
+                            {
+                                
+                                if (ind == 25)
+                                    return new((int)((int)Unsafe.As<long, ushort>(ref a.value) / (int)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, ushort>(ref a.value) / (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 27)
+                                    return new((long)((long)Unsafe.As<long, ushort>(ref a.value) / (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, ushort>(ref a.value) / (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 30)
+                            {
+                                
+                                if (ind == 29)
+                                    return new((double)((double)Unsafe.As<long, ushort>(ref a.value) / (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, short>(ref a.value) / (short)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((short)((short)Unsafe.As<long, short>(ref a.value) / (short)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 34)
+                        {
+                            
+                            if (ind < 33)
+                            {
+                                
+                                if (ind == 32)
+                                    return new((short)((short)Unsafe.As<long, short>(ref a.value) / (short)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((short)((short)Unsafe.As<long, short>(ref a.value) / (short)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, short>(ref a.value) / (uint)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 36)
+                            {
+                                
+                                if (ind == 35)
+                                    return new((int)((int)Unsafe.As<long, short>(ref a.value) / (int)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, short>(ref a.value) / (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((long)((long)Unsafe.As<long, short>(ref a.value) / (long)Unsafe.As<long, long>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 43)
+                    {
+                        
+                        if (ind < 40)
+                        {
+                            
+                            if (ind < 39)
+                            {
+                                
+                                if (ind == 38)
+                                    return new((float)((float)Unsafe.As<long, short>(ref a.value) / (float)Unsafe.As<long, float>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, short>(ref a.value) / (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) / (uint)Unsafe.As<long, byte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 42)
+                            {
+                                
+                                if (ind == 41)
+                                    return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) / (uint)Unsafe.As<long, sbyte>(ref b.value)));
+                                else
+                                    return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) / (uint)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) / (uint)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 46)
+                        {
+                            
+                            if (ind < 45)
+                            {
+                                
+                                if (ind == 44)
+                                    return new((uint)((uint)Unsafe.As<long, uint>(ref a.value) / (uint)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, uint>(ref a.value) / (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, uint>(ref a.value) / (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 48)
+                            {
+                                
+                                if (ind == 47)
+                                    return new((long)((long)Unsafe.As<long, uint>(ref a.value) / (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, uint>(ref a.value) / (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, uint>(ref a.value) / (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+        else
+        {
+            
+            if (ind < 74)
+            {
+                
+                if (ind < 62)
+                {
+                    
+                    if (ind < 56)
+                    {
+                        
+                        if (ind < 53)
+                        {
+                            
+                            if (ind < 51)
+                            {
+                                
+                                if (ind == 50)
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) / (int)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) / (int)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 52)
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) / (int)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) / (int)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 55)
+                            {
+                                
+                                if (ind == 54)
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) / (int)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((int)((int)Unsafe.As<long, int>(ref a.value) / (int)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, int>(ref a.value) / (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 59)
+                        {
+                            
+                            if (ind < 58)
+                            {
+                                
+                                if (ind == 57)
+                                    return new((long)((long)Unsafe.As<long, int>(ref a.value) / (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, int>(ref a.value) / (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, int>(ref a.value) / (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 61)
+                            {
+                                
+                                if (ind == 60)
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) / (ulong)Unsafe.As<long, byte>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) / (ulong)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) / (ulong)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 68)
+                    {
+                        
+                        if (ind < 65)
+                        {
+                            
+                            if (ind < 64)
+                            {
+                                
+                                if (ind == 63)
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) / (ulong)Unsafe.As<long, short>(ref b.value)));
+                                else
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) / (ulong)Unsafe.As<long, uint>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) / (ulong)Unsafe.As<long, int>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 67)
+                            {
+                                
+                                if (ind == 66)
+                                    return new((ulong)((ulong)Unsafe.As<long, ulong>(ref a.value) / (ulong)Unsafe.As<long, ulong>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, ulong>(ref a.value) / (long)Unsafe.As<long, long>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, ulong>(ref a.value) / (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 71)
+                        {
+                            
+                            if (ind < 70)
+                            {
+                                
+                                if (ind == 69)
+                                    return new((double)((double)Unsafe.As<long, ulong>(ref a.value) / (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) / (long)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((long)((long)Unsafe.As<long, long>(ref a.value) / (long)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 73)
+                            {
+                                
+                                if (ind == 72)
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) / (long)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) / (long)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((long)((long)Unsafe.As<long, long>(ref a.value) / (long)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+            else
+            {
+                
+                if (ind < 87)
+                {
+                    
+                    if (ind < 81)
+                    {
+                        
+                        if (ind < 78)
+                        {
+                            
+                            if (ind < 76)
+                            {
+                                
+                                if (ind == 75)
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) / (long)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) / (long)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                
+                                if (ind == 77)
+                                    return new((long)((long)Unsafe.As<long, long>(ref a.value) / (long)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, long>(ref a.value) / (float)Unsafe.As<long, float>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 80)
+                            {
+                                
+                                if (ind == 79)
+                                    return new((double)((double)Unsafe.As<long, long>(ref a.value) / (double)Unsafe.As<long, double>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) / (float)Unsafe.As<long, byte>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, float>(ref a.value) / (float)Unsafe.As<long, sbyte>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 84)
+                        {
+                            
+                            if (ind < 83)
+                            {
+                                
+                                if (ind == 82)
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) / (float)Unsafe.As<long, ushort>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) / (float)Unsafe.As<long, short>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, float>(ref a.value) / (float)Unsafe.As<long, uint>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 86)
+                            {
+                                
+                                if (ind == 85)
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) / (float)Unsafe.As<long, int>(ref b.value)));
+                                else
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) / (float)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((float)((float)Unsafe.As<long, float>(ref a.value) / (float)Unsafe.As<long, long>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+                else
+                {
+                    
+                    if (ind < 93)
+                    {
+                        
+                        if (ind < 90)
+                        {
+                            
+                            if (ind < 89)
+                            {
+                                
+                                if (ind == 88)
+                                    return new((float)((float)Unsafe.As<long, float>(ref a.value) / (float)Unsafe.As<long, float>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, float>(ref a.value) / (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) / (double)Unsafe.As<long, byte>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 92)
+                            {
+                                
+                                if (ind == 91)
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) / (double)Unsafe.As<long, sbyte>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) / (double)Unsafe.As<long, ushort>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) / (double)Unsafe.As<long, short>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        
+                        if (ind < 96)
+                        {
+                            
+                            if (ind < 95)
+                            {
+                                
+                                if (ind == 94)
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) / (double)Unsafe.As<long, uint>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) / (double)Unsafe.As<long, int>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) / (double)Unsafe.As<long, ulong>(ref b.value)));
+                            }
+
+                        }
+                        else
+                        {
+                            
+                            if (ind < 98)
+                            {
+                                
+                                if (ind == 97)
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) / (double)Unsafe.As<long, long>(ref b.value)));
+                                else
+                                    return new((double)((double)Unsafe.As<long, double>(ref a.value) / (double)Unsafe.As<long, float>(ref b.value)));
+                            }
+                            else
+                            {
+                                return new((double)((double)Unsafe.As<long, double>(ref a.value) / (double)Unsafe.As<long, double>(ref b.value)));
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
 
     private static readonly delegate*<long, long, VariadicNumber>[] opAdd = new delegate*<long, long, VariadicNumber>[]
     {

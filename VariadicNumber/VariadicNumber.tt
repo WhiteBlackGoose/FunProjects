@@ -51,6 +51,47 @@ public unsafe struct VariadicNumber
         => op<#= opName #>[a.index * 10 + b.index](a.value, b.value);
 <# } #>
 
+<#
+
+string TreeSearch(int from, int to, Func<int, string> elem, string indent = "        ")
+{
+    if (from == to)
+        return elem(from);
+    if (to == from + 1)
+        return $"\n{indent}if (ind == {from})\n{indent}    {elem(from)}\n{indent}else\n{indent}    {elem(to)}";
+    var mid = (to + from) / 2;
+    var ifBefore = TreeSearch(from, mid, elem, indent + "    ");
+    var ifAfter = TreeSearch(mid + 1, to, elem, indent + "    ");
+    return $"\n{indent}if (ind < {mid})\n{indent}{{\n{indent}    {ifBefore}\n{indent}}}\n{indent}else\n{indent}{{\n{indent}    {ifAfter}\n{indent}}}\n";
+}
+
+#>
+
+<# foreach (var (op, opName) in new[] { ("+", "Add"), ("-", "Subtract"), ("*", "Multiply"), ("/", "Divide") }) { #>
+    ///<summary>Performs the operator of '<#= op #>' and upcasts smaller numbers to bigger (e. g. int to double). 
+    ///Unlike normal operator <#= op #> which uses vtable of two objects, this one relies on binary search of
+    ///the necessary id.</summary>
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static VariadicNumber <#= opName #>(VariadicNumber a, VariadicNumber b)
+    {
+        var ind = a.index * <#= types.Count #> + b.index;
+        <#= TreeSearch(0, types.Count * types.Count - 1, i => 
+        {
+            var a = i / types.Count;
+            var b = i % types.Count;
+            
+            var (type1, id1) = types[a];
+            var (type2, id2) = types[b];
+            var cast = casted((type1, id1), (type2, id2));
+            
+            var expr = $"new(({cast})(({cast})Unsafe.As<long, {type1}>(ref a.value) {op} ({cast})Unsafe.As<long, {type2}>(ref b.value)))";
+
+            return $"return {expr};";
+        }
+        ) #>
+    }
+<# } #>
+
 <# foreach (var (op, opName) in new[] { ("+", "Add"), ("-", "Subtract"), ("*", "Multiply"), ("/", "Divide") }) { #>
     private static readonly delegate*<long, long, VariadicNumber>[] op<#= opName #> = new delegate*<long, long, VariadicNumber>[]
     {

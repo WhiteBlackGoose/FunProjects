@@ -88,10 +88,12 @@ b = double: 5 ; b / 2 = 2.5
 ```
 
 Performance:
-|                     Method |      Mean |     Error |    StdDev |  Gen 0 |  Gen 1 | Gen 2 | Allocated |
-|--------------------------- |----------:|----------:|----------:|-------:|-------:|------:|----------:|
-| VariadicNumberSumAllDouble | 35.536 ns | 0.7067 ns | 1.5660 ns |      - |      - |     - |         - |
-|        DynamicSumAllDouble | 28.182 ns | 0.5593 ns | 1.5498 ns | 0.0306 | 0.0002 |     - |      96 B |
-|         DoubleSumAllDouble |  6.562 ns | 0.1028 ns | 0.0911 ns |      - |      - |     - |         - |
+|                           Method |      Mean |     Error |    StdDev |  Gen 0 |  Gen 1 | Gen 2 | Allocated |
+|--------------------------------- |----------:|----------:|----------:|-------:|-------:|------:|----------:|
+| VariadicNumberSumAllDoubleVtable | 36.807 ns | 0.5999 ns | 0.5612 ns |      - |      - |     - |         - |
+| VariadicNumberSumAllDoubleBinary | 49.276 ns | 0.5811 ns | 0.5436 ns |      - |      - |     - |         - |
+|              DynamicSumAllDouble | 29.756 ns | 0.5877 ns | 1.6479 ns | 0.0306 | 0.0002 |     - |      96 B |
+|               DoubleSumAllDouble |  6.852 ns | 0.0836 ns | 0.0741 ns |      - |      - |     - |         - |
 
-It's a bit slower than dynamic, but it doesn't allocate anything.
+It's a bit slower than dynamic, but it doesn't allocate anything. (Vtable is used for operators, binary search
+is used for static methods).
