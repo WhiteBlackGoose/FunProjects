@@ -1,4 +1,12 @@
-﻿using System.Runtime.InteropServices;
+﻿/*
+ *  (c) WhiteBlackGoose 2021
+ *  MIT license.
+ */
+
+/*
+ * Generated at <#= System.DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm") #> UTC.
+ */
+
 using System.Runtime.CompilerServices;
 
 <# var typesArray = new[]{ "byte", "sbyte", "ushort", "short", "uint", "int", "ulong", "long", "float", "double" }; #>
@@ -11,13 +19,19 @@ using System.Runtime.CompilerServices;
    }#>
 <# Func<(string, int), (string, int), string> casted = (a, b) => a.Item2 > b.Item2 ? a.Item1 : b.Item1; #>
 
+///<summary>
+///A replacement for dynamic when working with arbitrary
+///numbers from the BCL. This type is unmanaged and allocation-free,
+///where dynamic creates some garbage on every arithmetical operation.
+///</summary>
 public unsafe struct VariadicNumber
 {
     private int index;
 
-    private long value;
+    private long value;    
 
 <# foreach (var (type, id) in types) { #>
+    ///<summary>Creates a variadic number with internal type of <#= type #></summary>
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public VariadicNumber(<#= type #> value)
     {
@@ -25,11 +39,13 @@ public unsafe struct VariadicNumber
         index = <#= id #>;
     }
 
+    ///<summary>Implicitly creates a VN from <#= type #></summary>
     public static implicit operator VariadicNumber(<#= type #> value) => new(value);
 <# } #>
 
 
 <# foreach (var (op, opName) in new[] { ("+", "Add"), ("-", "Subtract"), ("*", "Multiply"), ("/", "Divide") }) { #>
+    ///<summary>Performs the operator of '<#= op #>' and upcasts smaller numbers to bigger (e. g. int to double).</summary>
     [MethodImpl(MethodImplOptions.AggressiveInlining | MethodImplOptions.AggressiveOptimization)]
     public static VariadicNumber operator <#= op #>(VariadicNumber a, VariadicNumber b)
         => op<#= opName #>[a.index * 10 + b.index](a.value, b.value);
@@ -47,18 +63,15 @@ public unsafe struct VariadicNumber
 <# } #>
 
 <# foreach (var (op, opName) in new[] { ("+", "Add"), ("-", "Subtract"), ("*", "Multiply"), ("/", "Divide") }) { #>
-
 <# foreach (var (type1, id1) in types) { #>
 <# foreach (var (type2, id2) in types) { #>
 <# var cast = casted((type1, id1), (type2, id2)); #>
-    private static VariadicNumber Op<#= opName #><#= type1 #><#= type2 #>(long left, long right)
-        => new((<#= cast #>)((<#= cast #>)Unsafe.As<long, <#= type1 #>>(ref left) <#= op #> (<#= cast #>)Unsafe.As<long, <#= type2 #>>(ref right)));
+    private static VariadicNumber Op<#= opName #><#= type1 #><#= type2 #>(long left, long right) => new((<#= cast #>)((<#= cast #>)Unsafe.As<long, <#= type1 #>>(ref left) <#= op #> (<#= cast #>)Unsafe.As<long, <#= type2 #>>(ref right)));
 <# } #>
 <# } #>
-
 <# } #>
 
-
+    ///<summary>Returns the string representation of the internal number</summary>    
     public override string ToString()
         => index switch
         {
@@ -71,6 +84,7 @@ public unsafe struct VariadicNumber
 <# } #>
         };
 
+    ///<summary>Equivalent to ToString when set to true ; otherwise, prints info about the type</summary>
     public string ToString(bool includeType)
         => !includeType ? ToString() :
         index switch
@@ -84,7 +98,7 @@ public unsafe struct VariadicNumber
 <# } #>
         };
 
-
+    ///<summary>Tries to parse greedily (starting from the least likely types)</summary>
     public static bool TryParse(string s, out VariadicNumber res)
     {
         res = default;
@@ -98,6 +112,7 @@ public unsafe struct VariadicNumber
         return false;
     }
 
+    ///<summary>Tries to parse greedily (starting from the least likely types) and throws if unsuccessfully</summary>
     public static VariadicNumber Parse(string s)
         => TryParse(s, out var res) ? res : throw new();
 }

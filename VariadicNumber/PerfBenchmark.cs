@@ -2,10 +2,10 @@
 using HonkSharp.Fluency;
 using System.Linq;
 
-
+[MemoryDiagnoser]
 public class BenchVariadicNumber
 {
-    const int OperationsPerInvoke = 300;
+    const int OperationsPerInvoke = 10_000;
 
     public VariadicNumber[] numbersInt = new VariadicNumber[OperationsPerInvoke];
     public VariadicNumber[] numbersFloat = new VariadicNumber[OperationsPerInvoke];
