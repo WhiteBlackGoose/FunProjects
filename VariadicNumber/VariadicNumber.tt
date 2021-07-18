@@ -68,31 +68,6 @@ string TreeSearch(int from, int to, Func<int, string> elem, string indent = "   
 #>
 
 <# foreach (var (op, opName) in new[] { ("+", "Add"), ("-", "Subtract"), ("*", "Multiply"), ("/", "Divide") }) { #>
-    ///<summary>Performs the operator of '<#= op #>' and upcasts smaller numbers to bigger (e. g. int to double). 
-    ///Unlike normal operator <#= op #> which uses vtable of two objects, this one relies on binary search of
-    ///the necessary id.</summary>
-    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
-    public static VariadicNumber <#= opName #>(VariadicNumber a, VariadicNumber b)
-    {
-        var ind = a.index * <#= types.Count #> + b.index;
-        <#= TreeSearch(0, types.Count * types.Count - 1, i => 
-        {
-            var a = i / types.Count;
-            var b = i % types.Count;
-            
-            var (type1, id1) = types[a];
-            var (type2, id2) = types[b];
-            var cast = casted((type1, id1), (type2, id2));
-            
-            var expr = $"new(({cast})(({cast})Unsafe.As<long, {type1}>(ref a.value) {op} ({cast})Unsafe.As<long, {type2}>(ref b.value)))";
-
-            return $"return {expr};";
-        }
-        ) #>
-    }
-<# } #>
-
-<# foreach (var (op, opName) in new[] { ("+", "Add"), ("-", "Subtract"), ("*", "Multiply"), ("/", "Divide") }) { #>
     private static readonly delegate*<long, long, VariadicNumber>[] op<#= opName #> = new delegate*<long, long, VariadicNumber>[]
     {
 <# foreach (var (type1, id1) in types) { #>
@@ -156,4 +131,30 @@ string TreeSearch(int from, int to, Func<int, string> elem, string indent = "   
     ///<summary>Tries to parse greedily (starting from the least likely types) and throws if unsuccessfully</summary>
     public static VariadicNumber Parse(string s)
         => TryParse(s, out var res) ? res : throw new();
+
+
+<# foreach (var (op, opName) in new[] { ("+", "Add"), ("-", "Subtract"), ("*", "Multiply"), ("/", "Divide") }) { #>
+    ///<summary>Performs the operator of '<#= op #>' and upcasts smaller numbers to bigger (e. g. int to double). 
+    ///Unlike normal operator <#= op #> which uses vtable of two objects, this one relies on binary search of
+    ///the necessary id.</summary>
+    [MethodImpl(MethodImplOptions.AggressiveOptimization)]
+    public static VariadicNumber <#= opName #>Binary(VariadicNumber a, VariadicNumber b)
+    {
+        var ind = a.index * <#= types.Count #> + b.index;
+        <#= TreeSearch(0, types.Count * types.Count - 1, i => 
+        {
+            var a = i / types.Count;
+            var b = i % types.Count;
+            
+            var (type1, id1) = types[a];
+            var (type2, id2) = types[b];
+            var cast = casted((type1, id1), (type2, id2));
+            
+            var expr = $"new(({cast})(({cast})Unsafe.As<long, {type1}>(ref a.value) {op} ({cast})Unsafe.As<long, {type2}>(ref b.value)))";
+
+            return $"return {expr};";
+        }
+        ) #>
+    }
+<# } #>
 }
