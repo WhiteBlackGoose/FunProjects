@@ -51,7 +51,7 @@ public class BenchVariadicNumber
     {
         VariadicNumber a = 0d;
         foreach (var el in numbersDouble)
-            a = VariadicNumber.Add(a, VariadicNumber.Divide(VariadicNumber.Add(el, 1), VariadicNumber.Add(a, 2)));
+            a = VariadicNumber.AddBinary(a, VariadicNumber.DivideBinary(VariadicNumber.AddBinary(el, 1), VariadicNumber.AddBinary(a, 2)));
         numbersDouble[currId] = a;
         currId = (currId + 1) % OperationsPerInvoke;
     }
