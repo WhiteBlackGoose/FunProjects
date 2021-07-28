@@ -1,0 +1,22 @@
+name: quack
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  Quack:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          git clone https://github.com/urho3d/Urho3D
+          
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '14'
+          
+      - run: |
+          cd Urho3D
+          cmake -S . -B build
