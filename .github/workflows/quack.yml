@@ -20,3 +20,11 @@ jobs:
       - run: |
           cd Urho3D
           cmake -S . -B build
+          cmake --build build
+      
+      - name: 'Uploading artifacts'
+        uses: actions/upload-artifact@v2
+        with:
+          name: binaries-x64
+          path: ./Urho3D/build
+          retention-days: 5
