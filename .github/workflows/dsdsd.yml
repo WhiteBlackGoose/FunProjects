@@ -15,4 +15,6 @@ jobs:
         dotnet-version: 5.0.202
        
     - name: Is F# compiler here
-      run: fsc AAAAAAAA
+      run: |
+        cd /
+        dir * /s/b | findstr fsc\.exe$
