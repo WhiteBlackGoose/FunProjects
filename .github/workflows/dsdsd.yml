@@ -10,5 +10,5 @@ jobs:
     - uses: actions/checkout@v2
 
     - run: |
-        b=$(basename "$pwd")
+        b=$(basename "$(pwd)")
         echo "aaa$b"
