@@ -9,4 +9,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: echo "aaa$(basename $pwd)"
+    - run: |
+        b=$(basename "$pwd")
+        echo "aaa$b"
