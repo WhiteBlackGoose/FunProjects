@@ -9,12 +9,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setup .NET Core 5
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.202
-       
-    - name: Is F# compiler here
-      run: |
-        cd /
-        dir * /s/b | findstr fsc\.exe$
+    - run: echo "aaa$(basename $pwd)"
