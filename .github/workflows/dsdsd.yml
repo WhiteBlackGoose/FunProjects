@@ -1,10 +1,10 @@
-name: 'C# Test'
+name: 'AAAAA'
 
 on: push
 
 jobs:
   Test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
